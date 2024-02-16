@@ -1,9 +1,9 @@
-import ActionForm from '@/app/component/ActionForm';
+import UpdateConfigurationForm from '@/app/configuration/UpdateConfigurationForm';
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6">
-      <ActionForm />
+      <UpdateConfigurationForm />
     </main>
   );
 }
