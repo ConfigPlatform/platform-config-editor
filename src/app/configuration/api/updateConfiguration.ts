@@ -12,20 +12,19 @@ const updateConfiguration = async (req: NextRequest) => {
     const configurationFilePath = mergePath(process.env.CONFIG_BUILDER_PATH!, `_config/config.${scope.toLowerCase()}.json`);
 
     // get config entries by a scope
-    const entries = fs.readFileSync(configurationFilePath, 'utf8');
+    const entriesStr = fs.readFileSync(configurationFilePath, 'utf8');
+
+    const entriesObj = JSON.parse(entriesStr);
 
     // update configuration
-    const response = await axios.patch(`${process.env.HELPER_SERVER_ORIGIN}/completion/configuration/update`, { task, scope, entries });
+    const response = await axios.patch(`${process.env.HELPER_SERVER_ORIGIN}/completion/configuration/update`, { task, scope, entries: entriesObj });
 
-    const data = response.data;
-
-    const comment = get(data, 'result.comment', '');
-    const configuration = get(data, 'result.configuration', '');
+    const configuration = response.data;
 
     // update file entries
-    fs.writeFileSync(configurationFilePath, configuration);
+    fs.writeFileSync(configurationFilePath, JSON.stringify(configuration, null, 2));
 
-    return Response.json({ comment });
+    return Response.json({ comment: '' });
 }
 
 export default updateConfiguration
