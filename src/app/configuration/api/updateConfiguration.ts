@@ -25,7 +25,7 @@ const updateConfiguration = async (req: NextRequest):  Promise<Response> => {
         parser: 'json',
     });
 
-    console.log(formattedEntries, '==================formattedEntries==================')
+    console.log(await formattedEntries, '==================formattedEntries==================')
 
     // update configuration
     const response = await axios.patch(`${process.env.HELPER_SERVER_ORIGIN}/completion/configuration/update`, { task, scope, entries: formattedEntries });
