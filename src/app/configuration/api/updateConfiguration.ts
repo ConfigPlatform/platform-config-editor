@@ -2,7 +2,8 @@ import {NextRequest} from "next/server";
 import axios from "axios";
 import mergePath from "@/helper/mergePath";
 import fs from "fs";
-import {get} from "lodash";
+
+const { HELPER_SERVER_ORIGIN } = process.env;
 
 const updateConfiguration = async (req: NextRequest) => {
     const formData = await req.json();
@@ -12,12 +13,10 @@ const updateConfiguration = async (req: NextRequest) => {
     const configurationFilePath = mergePath(process.env.CONFIG_BUILDER_PATH!, `_config/config.${scope.toLowerCase()}.json`);
 
     // get config entries by a scope
-    const entriesStr = fs.readFileSync(configurationFilePath, 'utf8');
-
-    const entriesObj = JSON.parse(entriesStr);
+    const entries = fs.readFileSync(configurationFilePath, 'utf8');
 
     // update configuration
-    const response = await axios.patch(`${process.env.HELPER_SERVER_ORIGIN}/completion/configuration/update`, { task, scope, entries: entriesObj });
+    const response = await axios.patch(`${HELPER_SERVER_ORIGIN}/completion/configuration/update`, { task, scope, entries: JSON.stringify(entries) });
 
     const configuration = response.data;
 

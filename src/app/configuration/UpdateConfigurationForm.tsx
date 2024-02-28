@@ -35,7 +35,7 @@ const UpdateConfigurationForm = () => {
           ></textarea>
         </div>
         <Select name={'scope'} className={'mt-1'} required>
-          {configScopes.map(el => <option key={el} value={el}>{el}</option>)}
+          {configScopes.map(el => <option key={el} value={el.toLowerCase()}>{el}</option>)}
         </Select>
         <div className="flex items-center justify-between px-3 py-4">
           <Button type={'submit'}>Send</Button>
