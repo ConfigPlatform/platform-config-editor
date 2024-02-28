@@ -16,7 +16,7 @@ const updateConfiguration = async (req: NextRequest) => {
     const entries = fs.readFileSync(configurationFilePath, 'utf8');
 
     // update configuration
-    const response = await axios.patch(`${HELPER_SERVER_ORIGIN}/completion/configuration/update`, { task, scope, entries: JSON.stringify(entries) });
+    const response = await axios.patch(`${HELPER_SERVER_ORIGIN}/completion/configuration/update`, { task, scope, entries });
 
     const configuration = response.data;
 
