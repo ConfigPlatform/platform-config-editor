@@ -5,10 +5,9 @@ import fs from "fs";
 import * as prettier from 'prettier';
 const prettierConfig = JSON.parse(fs.readFileSync('./.prettierrc', 'utf8'));
 
-console.log(prettierConfig, '==================prettierConfig==================');
+const { HELPER_SERVER_ORIGIN } = process.env;
 
 const updateConfiguration = async (req: NextRequest):  Promise<Response> => {
-
     const formData = await req.json();
 
     const { task, scope } = formData;
@@ -16,24 +15,20 @@ const updateConfiguration = async (req: NextRequest):  Promise<Response> => {
     const configurationFilePath = mergePath(process.env.CONFIG_BUILDER_PATH!, `_config/config.${scope.toLowerCase()}.json`);
 
     // get config entries by a scope
-    const entriesStr = fs.readFileSync(configurationFilePath, 'utf8');
+    const entries = fs.readFileSync(configurationFilePath, 'utf8');
 
-    const entriesObj = JSON.parse(entriesStr);
+    // update configuration
+    const response = await axios.patch(`${HELPER_SERVER_ORIGIN}/completion/configuration/update`, { task, scope, entries });
 
-    const formattedEntries = prettier.format(JSON.stringify(entriesObj), {
+    const configuration = response.data;
+  
+    const formattedConfiguration = await prettier.format(configuration, {
         ...prettierConfig,
         parser: 'json',
     });
 
-    console.log(await formattedEntries, '==================formattedEntries==================')
-
-    // update configuration
-    const response = await axios.patch(`${process.env.HELPER_SERVER_ORIGIN}/completion/configuration/update`, { task, scope, entries: formattedEntries });
-
-    const configuration = response.data;
-
     // update file entries
-    fs.writeFileSync(configurationFilePath, JSON.stringify(configuration, null, 2));
+    fs.writeFileSync(configurationFilePath, formattedConfiguration);
 
     return Response.json({ comment: '' });
 }
