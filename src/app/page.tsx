@@ -1,9 +1,24 @@
-import UpdateConfigurationForm from '@/app/configuration/UpdateConfigurationForm';
+'use client';
 
-export default function Home() {
+import StructureSidebar from "@/app/component/sidebar/StructureSidebar";
+import BuilderLayout from "@/app/component/layout/BuilderLayout";
+import PropertySidebar from "@/app/component/sidebar/PropertySidebar";
+import useConfigurationStore from "@/app/store/configurationStore";
+import {useEffect} from "react";
+
+export default function Page() {
+    const { getConfiguration, reset } = useConfigurationStore.getState();
+
+    useEffect(() => {
+        getConfiguration();
+        return () => reset()
+    }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-6">
-      <UpdateConfigurationForm />
-    </main>
+      <BuilderLayout>
+        <StructureSidebar />
+        <div className={'w-8/12'}></div>
+        <PropertySidebar />
+      </BuilderLayout>
   );
 }

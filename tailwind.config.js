@@ -3,12 +3,14 @@
  */
 module.exports = {
   content: [
-    "./node_modules/flowbite-react/lib/**/*.js",
-    "./pages/**/*.{ts,tsx}",
-    "./public/**/*.html",
+    './src/**/*.{ts,tsx}'
   ],
-  plugins: [
-    require("flowbite/plugin")
-  ],
+  plugins: [],
   theme: {},
+  safelist: [
+    {
+      // плохая практика, но классы динамические и надо тут прописать то что мы будем использовать
+      pattern: /./, // Регулярное выражение для соответствия любому классу
+    },
+  ],
 };

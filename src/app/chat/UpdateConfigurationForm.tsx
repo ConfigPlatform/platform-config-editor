@@ -1,9 +1,7 @@
 'use client';
 
 import {useState} from 'react';
-import {Button, Select} from 'flowbite-react';
 import axios from "axios";
-import { get } from 'lodash';
 
 const configScopes: string[] = ['Page', 'Handler', 'Entity', 'Menu', 'Modal', 'Sidepanel', 'Footer'];
 
@@ -16,7 +14,7 @@ const UpdateConfigurationForm = () => {
     const formData = new FormData(e.target);
     const formValues = Object.fromEntries(formData.entries());
 
-    const response = await axios.patch(`${process.env.NEXT_PUBLIC_CLIENT_ORIGIN}/configuration/api`, formValues)
+    const response = await axios.patch(`${process.env.NEXT_PUBLIC_CLIENT_ORIGIN}/chat/api`, formValues)
 
     console.log(response)
   };
@@ -34,11 +32,11 @@ const UpdateConfigurationForm = () => {
             name={'task'}
           ></textarea>
         </div>
-        <Select name={'scope'} className={'mt-1'} required>
+        <select name={'scope'} className={'mt-1'} required>
           {configScopes.map(el => <option key={el} value={el.toLowerCase()}>{el}</option>)}
-        </Select>
+        </select>
         <div className="flex items-center justify-between px-3 py-4">
-          <Button type={'submit'}>Send</Button>
+          <button type={'submit'}>Send</button>
         </div>
       </form>
     </div>
