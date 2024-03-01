@@ -3,7 +3,7 @@ interface IProps {
 }
 
 const BuilderLayout = ({children}: IProps) => {
-    return <div className="flex justify-between items-center w-full">
+    return <div className="flex justify-between w-full">
         {children}
     </div>
 }

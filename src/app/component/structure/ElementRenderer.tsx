@@ -1,5 +1,8 @@
+'use client'
+
 import {get} from "lodash";
 import ElementListRenderer from "@/app/component/structure/ElementListRenderer";
+import useConfigurationStore from "@/app/store/configurationStore";
 
 interface IProps {
     ml: number;
@@ -7,11 +10,13 @@ interface IProps {
 }
 
 const ElementRenderer = ({element, ml}: IProps) => {
+    const { selectElement } = useConfigurationStore.getState();
+
     const type = get(element, 'type', '');
     const content = get(element, 'content', []);
 
     return <div>
-        <p style={{ marginLeft: `${ml}px` }}>{type}</p>
+        <p className={'hover:text-blue-700 cursor-pointer'} style={{ marginLeft: `${ml}px` }} onClick={() => selectElement(element)}>{type}</p>
         <ElementListRenderer ml={ml} content={content} />
     </div>
 }

@@ -5,6 +5,7 @@ import BuilderLayout from "@/app/component/layout/BuilderLayout";
 import PropertySidebar from "@/app/component/sidebar/PropertySidebar";
 import useConfigurationStore from "@/app/store/configurationStore";
 import {useEffect} from "react";
+import ComponentSchema from "@/app/component/schema/ComponentSchema";
 
 export default function Page() {
     const { getConfiguration, reset } = useConfigurationStore.getState();
@@ -17,7 +18,7 @@ export default function Page() {
   return (
       <BuilderLayout>
         <StructureSidebar />
-        <div className={'w-8/12'}></div>
+        <ComponentSchema />
         <PropertySidebar />
       </BuilderLayout>
   );
