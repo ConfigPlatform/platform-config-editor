@@ -1,9 +1,11 @@
 import {get} from "lodash";
 import ElementListRenderer from "@/app/component/schema/ElementListRenderer";
 import Text from './Text';
+import Button from './button';
 
 const componentMap: {[name: string]: any} = {
-    text: Text
+    text: Text,
+    button: Button,
 }
 
 interface IProps {
