@@ -1,9 +1,11 @@
 import {get} from "lodash";
 import ElementListRenderer from "@/app/component/schema/ElementListRenderer";
 import Text from './Text';
+import Filter from "@/app/component/schema/Filter";
 
 const componentMap: {[name: string]: any} = {
-    text: Text
+    text: Text,
+    filter:Filter
 }
 
 interface IProps {
