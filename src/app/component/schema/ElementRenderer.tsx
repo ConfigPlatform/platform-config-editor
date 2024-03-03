@@ -4,17 +4,19 @@ import ElementListRenderer from "@/app/component/schema/ElementListRenderer";
 import Text from './Text';
 import Button from './Button';
 
-const componentMap: { [name: string]: React.ComponentType<any> } = {
+const componentMap: { [name: string]: any} = {
     text: Text,
     button: Button,
 }
 
+interface ElementWithType {
+    type: string;
+    content: object[];
+}
+
 interface IProps {
     ml: number;
-    element: {
-        type: string;
-        content: any[];
-    };
+    element: ElementWithType | object;
 }
 
 const ElementRenderer = ({element, ml}: IProps) => {
