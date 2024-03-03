@@ -1,4 +1,3 @@
-import React from "react";
 import {get} from "lodash";
 import ElementListRenderer from "@/app/component/schema/ElementListRenderer";
 import Text from './Text';
