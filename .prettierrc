@@ -3,20 +3,10 @@
   "trailingComma": "all",
   "printWidth": 120,
   "bracketSpacing": false,
-  "jsxSingleQuote": false,
-  "arrowParens": "always","tabWidth": 2,
   "overrides": [
     {
       "files": ".prettierrc",
       "options": {"parser": "json"}
-    },
-    {
-      "files": "*.tsx",
-      "options": {"parser": "typescript", "tabWidth": 2}
-    },
-    {
-      "files": "*.css",
-      "options": {"parser": "css", "tabWidth": 2}
     }
   ]
 }
