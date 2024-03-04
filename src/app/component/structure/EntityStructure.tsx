@@ -4,30 +4,30 @@ import {nanoid} from 'nanoid';
 import ElementListRenderer from '@/app/component/structure/ElementListRenderer';
 import useConfigurationStore from '@/app/store/configurationStore';
 
-export interface Page {
-  path: string;
-  content: any[]; // Define a specific type for content if possible
+export interface Entity {
+  entityName: string;
+  fields: any[]; // Define a specific type for fields if possible
 }
 
-export interface IProps {
-  pages: Page[];
+interface IProps {
+  entities: Entity[];
 }
 
-const PageStructure = ({pages}: IProps) => {
+const EntityStructure = ({entities}: IProps) => {
   const {selectElement} = useConfigurationStore.getState();
 
   return (
     <div>
-      {pages.map((el) => (
+      {entities.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b className={'hover:text-blue-700 cursor-pointer'} onClick={() => selectElement(el)}>
-            {el.path}
+            {el.entityName}
           </b>
-          <ElementListRenderer ml={4} content={el.content} title="pages" />
+          <ElementListRenderer ml={4} content={el.fields} title="entities" />
         </div>
       ))}
     </div>
   );
 };
 
-export default PageStructure;
+export default EntityStructure;
