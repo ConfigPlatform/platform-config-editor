@@ -8,7 +8,7 @@ const StructureSidebar = () => {
     const pages = useConfigurationStore((state) => get(state, 'configuration.pages', []));
 
     return (
-        <aside className={'h-screen w-1/12 border-gray-200 bg-gray-100'}>
+        <aside className={'h-screen w-64 border-gray-200 bg-gray-100 overflow-scroll pl-5'}>
         <b>Pages:</b>
         <PageStructure pages={pages} />
         </aside>
