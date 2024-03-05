@@ -1,6 +1,12 @@
 import React from 'react';
 
-const InputComponent = ({ label, name, type, dataType }) => {
+interface InputProps {
+    label: string;
+    name: string;
+}
+
+const Input: React.FC<InputProps> = ({ label, name }) => {
+
     return (
         <div className="mb-4">
             <label htmlFor={name} className="block text-sm font-medium text-gray-700 mr-2">{label}</label>
@@ -8,4 +14,4 @@ const InputComponent = ({ label, name, type, dataType }) => {
     );
 };
 
-export default InputComponent;
+export default Input;
