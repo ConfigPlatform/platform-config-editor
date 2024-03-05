@@ -1,15 +1,18 @@
-import {nanoid} from "nanoid";
-import ElementRenderer from "@/app/component/schema/ElementRenderer";
+import {nanoid} from 'nanoid';
+import ElementRenderer from '@/app/component/schema/ElementRenderer';
 
 interface IProps {
-    ml: number;
-    content: object[];
+  content: object[];
 }
 
-const ElementListRenderer = ({content, ml}: IProps) => {
-    return <>
-        {content.map(el => <ElementRenderer key={nanoid()} ml={ml} element={el} />)}
+const ElementListRenderer = ({content}: IProps) => {
+  return (
+    <>
+      {content.map((el) => (
+        <ElementRenderer key={nanoid()} element={el} />
+      ))}
     </>
-}
+  );
+};
 
-export default ElementListRenderer
+export default ElementListRenderer;

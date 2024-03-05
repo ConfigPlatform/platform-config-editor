@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky"
   },
   "dependencies": {
     "axios": "^1.6.7",
@@ -19,6 +20,9 @@
     "react-dom": "^18",
     "zustand": "^4.5.1"
   },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/lodash": "^4.14.202",
@@ -28,6 +32,8 @@
     "autoprefixer": "^10.4.17",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "postcss": "^8.4.33",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.4.1",
