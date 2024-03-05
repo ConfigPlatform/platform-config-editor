@@ -8,7 +8,7 @@ const ComponentSchema = () => {
   const selectedElement = useConfigurationStore((state) => get(state, 'selectedElement', {}));
 
   return (
-    <div className={'w-8/12'}>
+    <div className="w-8/12 ml-5 mt-5">
       <ElementRenderer element={selectedElement} />
     </div>
   );

@@ -29,7 +29,7 @@ const ElementRenderer = ({element}: IProps) => {
     <>
       {Component && !isButton && (
         <>
-          <div className="mt-2 ml-2">
+          <div>
             <Component {...element} />
           </div>
           <ElementListRenderer content={content} />
@@ -37,7 +37,7 @@ const ElementRenderer = ({element}: IProps) => {
       )}
 
       {Component && isButton && (
-        <div className="mt-2 ml-2">
+        <div>
           <Component {...element}>
             <ElementListRenderer content={content} />
           </Component>
