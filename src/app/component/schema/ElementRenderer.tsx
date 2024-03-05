@@ -14,11 +14,10 @@ interface ElementWithType {
 }
 
 interface IProps {
-  ml: number;
   element: ElementWithType | object;
 }
 
-const ElementRenderer = ({element, ml}: IProps) => {
+const ElementRenderer = ({element}: IProps) => {
   const type = get(element, 'type', '');
   const content = get(element, 'content', []);
   const Component = componentMap[type];
@@ -30,17 +29,17 @@ const ElementRenderer = ({element, ml}: IProps) => {
     <>
       {Component && !isButton && (
         <>
-          <div style={{marginLeft: `${ml}px`, marginTop: '10px'}}>
+          <div className="mt-2 ml-2">
             <Component {...element} />
           </div>
-          <ElementListRenderer ml={ml + 20} content={content} />
+          <ElementListRenderer content={content} />
         </>
       )}
 
       {Component && isButton && (
-        <div style={{marginLeft: `${ml}px`, marginTop: '10px'}}>
+        <div className="mt-2 ml-2">
           <Component {...element}>
-            <ElementListRenderer ml={ml} content={content} />
+            <ElementListRenderer content={content} />
           </Component>
         </div>
       )}
