@@ -1,7 +1,41 @@
 import React from 'react';
 import Column from './Column';
+import {get} from 'lodash';
 
-const FormLayoutComponent = () => {
+const FormLayoutComponent = (props: any) => {
+
+  console.log(props.columns, '333333333')
+  
+  const tableId = get(props, 'id', '')
+  const columns = get(props, 'columns', [])
+  // columns.map(el => {
+  //   if(el.cell.content[0].value) {
+  //     console.log(el.cell.content[0].value, '111111')
+  //   } else if (el.cell.content[0].content) {
+  //     console.log(el.cell.content[0].content, '222222')
+  //   } else {
+  //     console.log('else')
+  //   }
+  // })
+
+  function mapper(columns) {
+    columns.map(el => {
+      console.log(el, 'oleg')
+      if(el.cell?.content[0].value) {
+        console.log(el.cell.content[0].value)
+      } else if (el.cell?.content[0].content){
+        mapper(el.cell.content[0].content)
+      } else if(el.value) {
+        console.log(el.value, 'VALUE!!!!!')
+      }
+       else {
+        console.log('Error')
+      }
+    })
+  }
+
+  mapper(columns);
+  
   return (
     <div
       className="border-dashed border-2 border-sky-500 rounded-md flex flex-col p-4"
@@ -14,6 +48,8 @@ const FormLayoutComponent = () => {
 
       {/* Контейнер для колонок */}
       <table className="relative flex items-center">
+
+
         {/* Колонка "Data" */}
         <div className="flex items-center">
           <div
@@ -21,26 +57,6 @@ const FormLayoutComponent = () => {
             className="border-dashed border-2 border-sky-500 rounded-md flex items-center justify-center mr-2"
           >
             <Column label="Date" name="date" type="text" dataType={null} />
-          </div>
-        </div>
-
-        {/* Колонка "Name" */}
-        <div className="flex items-center">
-          <div
-            style={{width: '100px', height: '50px'}}
-            className="border-dashed border-2 border-sky-500 rounded-md flex items-center justify-center mr-2"
-          >
-            <Column label="Name" name="name" type="text" dataType={null}/>
-          </div>
-        </div>
-
-        {/* Колонка "Email" */}
-        <div className="flex items-center">
-          <div
-            style={{width: '100px', height: '50px'}}
-            className="border-dashed border-2 border-sky-500 rounded-md flex items-center justify-center mr-2"
-          >
-            <Column label="Email" name="email" type="text" dataType={null}/>
           </div>
         </div>
         
