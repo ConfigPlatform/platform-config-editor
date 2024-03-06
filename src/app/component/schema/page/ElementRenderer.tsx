@@ -1,20 +1,9 @@
 import {get} from 'lodash';
-import Text from './Text';
-import Button from '@/app/component/schema/Button';
-import ElementListRenderer from '@/app/component/schema/ElementListRenderer';
-
-const componentMap: {[name: string]: any} = {
-  text: Text,
-  button: Button,
-};
-
-interface ElementWithType {
-  type: string;
-  content: object[];
-}
+import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
+import componentMap from '@/app/component/schema/page/componentMap';
 
 interface IProps {
-  element: ElementWithType | object;
+  element: object;
 }
 
 const ElementRenderer = ({element}: IProps) => {

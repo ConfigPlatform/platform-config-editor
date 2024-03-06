@@ -2,16 +2,19 @@
 
 import useConfigurationStore from '@/app/store/configurationStore';
 import {get} from 'lodash';
-import ElementRenderer from '@/app/component/schema/ElementRenderer';
+import schemaMap from '@/app/component/schema/schemaMap';
 
-const ComponentSchema = () => {
+const Schema = () => {
   const selectedElement = useConfigurationStore((state) => get(state, 'selectedElement', {}));
+  const schema = get(selectedElement, 'structure', '');
+
+  const SchemaRenderer = schemaMap[schema];
 
   return (
     <div className={'w-8/12 flex items-start justify-start flex-col p-2'}>
-      <ElementRenderer element={selectedElement} />
+      {SchemaRenderer ? <SchemaRenderer element={selectedElement} /> : null}
     </div>
   );
 };
 
-export default ComponentSchema;
+export default Schema;

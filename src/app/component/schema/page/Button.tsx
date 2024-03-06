@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {get} from 'lodash';
-import ElementListRenderer from '@/app/component/schema/ElementListRenderer';
+import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 
 interface ButtonProps {
   children: ReactNode;
