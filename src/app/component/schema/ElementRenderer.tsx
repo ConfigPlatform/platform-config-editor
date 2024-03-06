@@ -19,32 +19,9 @@ interface IProps {
 
 const ElementRenderer = ({element}: IProps) => {
   const type = get(element, 'type', '');
-  const content = get(element, 'content', []);
   const Component = componentMap[type];
 
-  // Check if Component exists and its type is 'button'
-  const isButton = type === 'button';
-
-  return (
-    <>
-      {Component && !isButton && (
-        <>
-          <div>
-            <Component {...element} />
-          </div>
-          <ElementListRenderer content={content} />
-        </>
-      )}
-
-      {Component && isButton && (
-        <div>
-          <Component {...element}>
-            <ElementListRenderer content={content} />
-          </Component>
-        </div>
-      )}
-    </>
-  );
+  return <>{Component ? <Component {...element} /> : null}</>;
 };
 
 export default ElementRenderer;
