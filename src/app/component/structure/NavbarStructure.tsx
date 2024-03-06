@@ -2,6 +2,8 @@
 
 import {nanoid} from 'nanoid';
 import useConfigurationStore from '@/app/store/configurationStore';
+import {Page} from '@/app/component/structure/PageStructure';
+import ElementListRenderer from '@/app/component/structure/ElementListRenderer';
 
 export interface INavbar {
   className: string;
@@ -21,19 +23,20 @@ export interface IContentContent {
 
 interface IProps {
   navbar: INavbar[];
+  pages: Page[];
 }
 
-const NavbarStructure = ({navbar}: IProps) => {
-  console.log(navbar, 'navbar');
+const NavbarStructure = ({navbar, pages}: IProps) => {
   const {selectElement} = useConfigurationStore.getState();
 
   return (
     <div>
-      {navbar.content?.map((el: IContent) => (
+      {pages.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b className={'hover:text-blue-700 cursor-pointer'} onClick={() => selectElement(el)}>
-            {el.content[0].value}
+            {el.path}
           </b>
+          <ElementListRenderer ml={4} content={el.content} title="pages" />
         </div>
       ))}
     </div>

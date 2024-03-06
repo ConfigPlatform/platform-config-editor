@@ -18,7 +18,7 @@ const StructureSidebar = () => {
       <h3 className="font-bold mt-5">Entities:</h3>
       <EntityStructure entities={entities as Entity[]} />
       <h3 className="font-bold">Navbar:</h3>
-      <NavbarStructure navbar={navbar as INavbar[]} />
+      <NavbarStructure navbar={navbar as INavbar[]} pages={pages as Page[]} />
     </aside>
   );
 };
