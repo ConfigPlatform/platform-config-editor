@@ -1,6 +1,4 @@
 import Text from './Text';
-import Form from './Form';
-import Filter from './Filter';
 import Container from './Container';
 import Button from '@/app/component/schema/page/Button';
 import Row from '@/app/component/schema/page/Row';

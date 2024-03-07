@@ -1,16 +1,18 @@
 import React from 'react';
 import {get} from 'lodash';
-import componentMap from './componentMap';
 import ElementRenderer from './ElementRenderer';
+import BlockLabel from '@/app/component/schema/page/BlockLabel';
+import {nanoid} from 'nanoid';
+
 const Container = (props) => {
   const content = get(props, 'content', []);
 
   return (
     <div>
-      <p className="font-bold d-block">Container </p>
-      <div className="border-dashed border-4 border-sky-500 rounded-lg p-5 my-2.5 mx-auto overflow-auto">
-        {content.map((item, index) => {
-          return <ElementRenderer element={item} />;
+      <BlockLabel label={'Container'} />
+      <div className="border-dashed border border-emerald-500 p-1 m-1">
+        {content.map((item) => {
+          return <ElementRenderer key={nanoid()} element={item} />;
         })}
       </div>
     </div>
