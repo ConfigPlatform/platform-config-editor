@@ -1,44 +1,38 @@
 import React from 'react';
 import Column from './Column';
-import { get } from 'lodash';
+import {get} from 'lodash';
+import BlockLabel from '@/app/component/schema/page/BlockLabel';
 
-interface Icolumns {
-  type: 'container',
-  className: string,
-  name: string,
-  sortable: boolean,
+interface IColumns {
+  type: 'container';
+  className: string;
+  name: string;
+  sortable: boolean;
   cell: {
-    className: string,
+    className: string;
     content: {
-      type: string,
-      value: string,
+      type: string;
+      value: string;
       vars: {
-        id: string
-      }
-    }[]
-  }
+        id: string;
+      };
+    }[];
+  };
 }
 
 const FormLayoutComponent = (props: any) => {
-  const columns: Icolumns[] = get(props, 'columns', []);
+  const columns: IColumns[] = get(props, 'columns', []);
 
   return (
-    <div className="border-dashed border-2 border-sky-500 rounded-md flex flex-col p-2 w-10/12">
-      {/* "Table" в левом верхнем углу */}
-      <div className="self-start mb-4">
-        <p>Table</p>
-      </div>
+    <div className="border-dashed border border-blue-500 p-1 m-1">
+      <BlockLabel label={'Table'} />
 
       {/* Контейнер для колонок */}
-      <table className="relative flex items-center w-full justify-evenly">
-        {columns.map((el) => (
-          <div key={el.name} className="flex items-center">
-            <div className="border-dashed border-2 border-sky-500 rounded-md flex items-center justify-center p-2 min-w-24">
-              <Column name={el.name} />
-            </div>
-          </div>
+      <div className="flex flex-row">
+        {columns.map((el, i) => (
+          <Column key={i} name={el.name} />
         ))}
-      </table>
+      </div>
     </div>
   );
 };
