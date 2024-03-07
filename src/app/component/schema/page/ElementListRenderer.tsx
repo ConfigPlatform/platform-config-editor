@@ -1,5 +1,5 @@
 import {nanoid} from 'nanoid';
-import ElementRenderer from '@/app/component/schema/ElementRenderer';
+import ElementRenderer from '@/app/component/schema/page/ElementRenderer';
 
 interface IProps {
   content: object[];
