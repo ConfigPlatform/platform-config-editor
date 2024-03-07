@@ -1,7 +1,6 @@
 import React, {ReactNode} from 'react';
 import {get} from 'lodash';
-import ElementListRenderer
-  from '@/app/component/schema/page/ElementListRenderer';
+import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 import BlockLabel from '@/app/component/schema/page/BlockLabel';
 
 interface ButtonProps {
@@ -11,8 +10,8 @@ interface ButtonProps {
 const Row: React.FC<ButtonProps> = (props: ButtonProps) => {
   const content = get(props, 'content', []);
 
-  const elementClass:string = 'flex flex-wrap w-full my-4';
-  const editorClass:string = 'border-dashed border border-emerald-500 p-1 m-1';
+  const elementClass: string = 'flex flex-wrap w-full my-4';
+  const editorClass: string = 'border-dashed border border-emerald-500 p-1 m-1';
 
   return (
     <div className={editorClass + ' ' + elementClass}>
