@@ -8,12 +8,12 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
-  const content = get(props, 'content', []);
+  const text = get(props, 'text', '');
 
   return (
     <div className="border-dashed border border-sky-500 p-1 m-1">
       <BlockLabel label={'Button'} />
-      <ElementListRenderer content={content} />
+      <p>{text}</p>
     </div>
   );
 };
