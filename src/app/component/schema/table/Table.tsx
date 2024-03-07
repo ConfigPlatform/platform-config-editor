@@ -24,7 +24,7 @@ const FormLayoutComponent = (props: any) => {
   const columns: IColumns[] = get(props, 'columns', []);
 
   return (
-    <div className="border-dashed border border-blue-500 p-1 m-1">
+    <div className="border-dashed border border-blue-500 p-1 m-2">
       <BlockLabel label={'Table'} />
 
       {/* Контейнер для колонок */}

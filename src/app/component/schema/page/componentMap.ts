@@ -4,6 +4,7 @@ import Button from '@/app/component/schema/page/Button';
 import Row from '@/app/component/schema/page/Row';
 import Col from '@/app/component/schema/page/Col';
 import Table from '@/app/component/schema/table/Table';
+import Filter from '@/app/component/schema/page/Filter';
 
 const componentMap: {[name: string]: any} = {
   text: Text,
@@ -12,6 +13,7 @@ const componentMap: {[name: string]: any} = {
   row: Row,
   col: Col,
   table: Table,
+  filter: Filter,
 };
 
 export default componentMap;
