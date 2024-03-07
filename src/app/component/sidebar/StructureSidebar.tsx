@@ -9,6 +9,8 @@ import {IEntity} from '@/app/component/structure/entity/ElementListRenderer';
 const StructureSidebar = () => {
   const pages = useConfigurationStore((state) => get(state, 'configuration.pages', []));
   const entities = useConfigurationStore((state) => get(state, 'configuration.entities', []));
+  const modals = useConfigurationStore((state) => get(state, 'configuration.modals', []));
+  console.log(modals, 'modals');
 
   return (
     <aside className={'h-screen w-64 border-gray-200 bg-gray-100 pl-5 overflow-scroll'}>
