@@ -11,7 +11,7 @@ const Row: React.FC<ButtonProps> = (props: ButtonProps) => {
   const content = get(props, 'content', []);
 
   const elementClass: string = 'flex flex-wrap w-full my-4';
-  const editorClass: string = 'border-dashed border border-emerald-500 p-1 m-1';
+  const editorClass: string = 'border-dashed border border-emerald-500 p-1 mx-2';
 
   return (
     <div className={editorClass + ' ' + elementClass}>

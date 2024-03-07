@@ -6,3 +6,4 @@ Row - emerald-500
 Col - indigo-500
 Button - lime-500
 Text - violet-500
+Filter - yellow-500
