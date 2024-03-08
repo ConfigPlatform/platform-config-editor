@@ -13,7 +13,7 @@ const StructureSidebar = () => {
   const navbar = useConfigurationStore((state) => get(state, 'configuration.navbar', []));
 
   return (
-    <aside className={'h-screen w-64 border-gray-200 bg-gray-100 pl-5 overflow-scroll'}>
+    <aside className={'h-screen w-64 border-gray-200 bg-gray-100 pl-5 overflow-y-auto overflow-x-hidden'}>
       <h3 className="font-bold">Pages:</h3>
       <PageStructure pages={pages as Page[]} />
       <h3 className="font-bold mt-5">Entities:</h3>
