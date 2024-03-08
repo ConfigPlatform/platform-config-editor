@@ -1,29 +1,40 @@
 'use client';
 
 import ElementListRenderer from '@/app/component/structure/handler/ElementListRenderer';
+import useConfigurationStore from '@/app/store/configurationStore';
+import {nanoid} from 'nanoid';
 
-export interface INavbar {
-  className: string;
-  content: IContent[];
-}
-
-export interface IContent {
-  content: IContentContent[];
-  path: string;
+export interface IHandlerAction {
   type: string;
 }
-export interface IContentContent {
-  className: string;
-  type: string;
-  value: string;
+
+export interface IHandler {
+  name: string;
+  actions: IHandlerAction[];
 }
 
 interface IProps {
-  navbar: object;
+  handlers: IHandler[];
 }
 
-const HandlerStructure = ({navbar}: IProps) => {
-  return <ElementListRenderer ml={4} content={navbar} />;
+const HandlerStructure = ({handlers}: IProps) => {
+  const {selectElement} = useConfigurationStore.getState();
+
+  return (
+    <div>
+      {handlers.map((el) => (
+        <div key={nanoid()} style={{marginLeft: '4px'}}>
+          <b
+            className={'hover:text-blue-700 cursor-pointer'}
+            onClick={() => selectElement({element: el, structure: 'handler'})}
+          >
+            {el.name}
+          </b>
+          <ElementListRenderer ml={4} actions={el.actions} title="handlers" />
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default HandlerStructure;
