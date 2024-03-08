@@ -12,7 +12,7 @@ const StructureSidebar = () => {
   const pages = useConfigurationStore((state) => get(state, 'configuration.pages', []));
   const entities = useConfigurationStore((state) => get(state, 'configuration.entities', []));
   const navbar = useConfigurationStore((state) => get(state, 'configuration.navbar', []));
-  const modal = useConfigurationStore((state) => get(state, 'configuration.modals', []));
+  const modals = useConfigurationStore((state) => get(state, 'configuration.modals', []));
 
   return (
     <aside className={'h-screen w-64 border-gray-200 bg-gray-100 pl-5 overflow-scroll'}>
@@ -23,7 +23,7 @@ const StructureSidebar = () => {
       <h3 className="font-bold mt-5">Navbar:</h3>
       <NavbarStructure navbar={navbar as INavbar[]} />
       <h3 className="font-bold mt-5">Modals:</h3>
-      <ModalStructure modal={modal as IModal[]} />
+      <ModalStructure modals={modals as IModal[]} />
     </aside>
   );
 };
