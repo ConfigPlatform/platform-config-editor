@@ -3,23 +3,21 @@
 import ElementListRenderer from '@/app/component/structure/modal/ElementListRenderer';
 
 export interface IModal {
-  className: string;
-  content: IContent[];
+  content: IContentModal[];
+  id: string;
+  placement: string;
+  width: string;
 }
 
-export interface IContent {
-  content: IContentContent[];
-  path: string;
-  type: string;
-}
-export interface IContentContent {
-  className: string;
-  type: string;
-  value: string;
-}
+type IContentModal = {
+  type: 'text' | 'container' | 'form';
+  className?: string;
+  value?: string;
+  content?: Array<IContentModal | Form>;
+};
 
-interface IProps {
-  modal: object;
+export interface IProps {
+  modal: IModal[];
 }
 
 const ModalStructure = ({modal}: IProps) => {
