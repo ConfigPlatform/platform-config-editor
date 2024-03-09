@@ -9,7 +9,7 @@ export interface IInput {
 const Input: React.FC<IInput> = ({name, type}) => {
   return (
     <div className="border-dashed border border-red-600 p-1 m-2">
-      <BlockLabel label={`Input <b>${type}</b>`} />
+      <BlockLabel label={`Input ${type}`} />
       <p className={'text-sm'}>{name}</p>
     </div>
   );
