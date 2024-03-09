@@ -10,7 +10,7 @@ const BlockLabel: React.FC<ButtonProps> = (props: ButtonProps) => {
 
   return (
     <div className="text-xs w-full -mt-3">
-      <span className="bg-white">{label}</span>
+      <span className="bg-white" dangerouslySetInnerHTML={{__html: label}} />
     </div>
   );
 };

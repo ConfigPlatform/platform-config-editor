@@ -14,17 +14,20 @@ export interface IConfiguration {
 
 interface IState {
   configuration: Partial<IConfiguration>;
-  selectedElement: object;
+  selected: Partial<{
+    entries: object;
+    scope: string;
+  }>;
   loading: boolean;
   error: Error | null;
   getConfiguration: () => Promise<void>;
-  selectElement: (payload: {element: object; structure: string}) => void;
+  selectElement: (payload: {entries: object; scope: string}) => void;
   reset: () => void;
 }
 
-const initialState: Pick<IState, 'configuration' | 'selectedElement' | 'loading' | 'error'> = {
+const initialState: Pick<IState, 'configuration' | 'selected' | 'loading' | 'error'> = {
   configuration: {},
-  selectedElement: {},
+  selected: {},
   loading: false,
   error: null,
 };
@@ -38,8 +41,8 @@ const useConfigurationStore = create<IState>()(
       set({configuration});
     },
 
-    selectElement: ({element, structure}) => {
-      set({selectedElement: {...element, structure}});
+    selectElement: (payload) => {
+      set({selected: payload});
     },
 
     reset: () => set(initialState),

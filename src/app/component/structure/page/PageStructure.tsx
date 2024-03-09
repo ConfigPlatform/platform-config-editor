@@ -22,11 +22,11 @@ const PageStructure = ({pages}: IProps) => {
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
             className={'hover:text-blue-700 cursor-pointer'}
-            onClick={() => selectElement({element: el, structure: 'page'})}
+            onClick={() => selectElement({entries: el, scope: 'page'})}
           >
             {el.path}
           </b>
-          <ElementListRenderer ml={4} content={el.content} title="pages" />
+          <ElementListRenderer ml={4} content={el.content} />
         </div>
       ))}
     </div>
