@@ -15,7 +15,7 @@ const ElementListRenderer = ({actions, ml}: IProps) => {
   return (
     <>
       {actions.map((el) => (
-        <ElementRenderer key={nanoid()} ml={ml + 10} element={el} />
+        <ElementRenderer key={nanoid()} ml={ml + 5} element={el} />
       ))}
     </>
   );

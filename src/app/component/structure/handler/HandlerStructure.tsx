@@ -22,16 +22,16 @@ const HandlerStructure = ({entries}: IProps) => {
 
   return (
     <div>
-      <p className={'text-base font-bold'}>HANDLER</p>
+      <p className={'text-xs font-bold'}>HANDLER</p>
       {entries.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
-            className={'hover:text-blue-700 cursor-pointer'}
+            className={'hover:text-blue-700 cursor-pointer text-xs'}
             onClick={() => selectElement({entries: el, scope: 'handler'})}
           >
             {el.name}
           </b>
-          <ElementListRenderer ml={4} actions={el.actions} title="handlers" />
+          <ElementListRenderer ml={0} actions={el.actions} title="handlers" />
         </div>
       ))}
     </div>

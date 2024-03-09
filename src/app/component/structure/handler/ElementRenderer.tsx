@@ -27,7 +27,7 @@ const ElementRenderer = ({element, ml}: IProps) => {
   return (
     <div>
       <p
-        className={'hover:text-blue-700 cursor-pointer'}
+        className={'hover:text-blue-700 cursor-pointer text-xs'}
         style={{marginLeft: `${ml}px`}}
         onClick={() => selectElement({element, structure: 'handler'})}
       >
@@ -36,8 +36,8 @@ const ElementRenderer = ({element, ml}: IProps) => {
       <ElementListRenderer ml={ml} actions={nestedActions} />
       {element.type === 'condition' && (
         <>
-          {onMatchActions.length > 0 && <ElementListRenderer ml={ml + 20} actions={onMatchActions} />}
-          {onNotMatchActions.length > 0 && <ElementListRenderer ml={ml + 10} actions={onNotMatchActions} />}
+          {onMatchActions.length > 0 && <ElementListRenderer ml={ml} actions={onMatchActions} />}
+          {onNotMatchActions.length > 0 && <ElementListRenderer ml={ml} actions={onNotMatchActions} />}
         </>
       )}
     </div>

@@ -12,7 +12,7 @@ const Schema = () => {
   const SchemaRenderer = schemaMap[scope];
 
   return (
-    <div className={'w-8/12 flex items-start justify-start flex-col p-2'}>
+    <div className={'w-8/12 flex items-start justify-start flex-col p-2 overflow-y-auto overflow-x-hidden h-screen'}>
       {SchemaRenderer ? <SchemaRenderer element={entries} /> : null}
     </div>
   );

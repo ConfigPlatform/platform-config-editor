@@ -18,7 +18,7 @@ const ElementRenderer = ({element, ml}: IProps) => {
   return (
     <div>
       <p
-        className={'hover:text-blue-700 cursor-pointer'}
+        className={'hover:text-blue-700 cursor-pointer text-xs'}
         style={{marginLeft: `${ml}px`}}
         onClick={() => selectElement({entries: element, scope: 'page'})}
       >

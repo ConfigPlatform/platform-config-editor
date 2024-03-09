@@ -17,7 +17,7 @@ const ElementRenderer = ({entity, ml}: IProps) => {
   return (
     <div>
       <p
-        className={'hover:text-blue-700 cursor-pointer font-bold'}
+        className={'hover:text-blue-700 cursor-pointer font-bold text-xs'}
         style={{marginLeft: `${ml}px`}}
         onClick={() => selectElement({entries: entity, scope: 'entity'})}
       >

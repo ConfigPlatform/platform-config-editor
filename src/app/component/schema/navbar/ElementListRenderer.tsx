@@ -1,5 +1,5 @@
 import {nanoid} from 'nanoid';
-import NavbarElementRenderer from '@/app/component/schema/navbar/NavbarElementRenderer';
+import ElementRenderer from '@/app/component/schema/navbar/ElementRenderer';
 
 interface IProps {
   content: object[];
@@ -9,7 +9,7 @@ const ElementListRenderer = ({content}: IProps) => {
   return (
     <>
       {content.map((el) => (
-        <NavbarElementRenderer key={nanoid()} element={el} />
+        <ElementRenderer key={nanoid()} element={el} />
       ))}
     </>
   );

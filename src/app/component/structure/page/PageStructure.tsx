@@ -18,16 +18,21 @@ const PageStructure = ({entries}: IProps) => {
 
   return (
     <div>
-      <p className={'text-base font-bold'}>PAGE</p>
+      <p
+        className={'text-xs font-bold hover:text-blue-700 cursor-pointer'}
+        onClick={() => selectElement({entries, scope: 'page'})}
+      >
+        PAGE
+      </p>
       {entries.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
-            className={'hover:text-blue-700 cursor-pointer'}
+            className={'hover:text-blue-700 cursor-pointer text-xs'}
             onClick={() => selectElement({entries: el, scope: 'page'})}
           >
             {el.path}
           </b>
-          <ElementListRenderer ml={4} content={el.content} />
+          <ElementListRenderer ml={0} content={el.content} />
         </div>
       ))}
     </div>

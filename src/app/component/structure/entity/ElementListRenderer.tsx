@@ -14,7 +14,7 @@ const ElementListRenderer = ({ml, entities}: IProps) => {
   return (
     <>
       {entities.map((el, i) => (
-        <ElementRenderer key={i} ml={ml + 10} entity={el} />
+        <ElementRenderer key={i} ml={ml + 5} entity={el} />
       ))}
     </>
   );

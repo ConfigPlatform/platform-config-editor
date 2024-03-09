@@ -1,6 +1,7 @@
 'use client';
 
 import ElementListRenderer from '@/app/component/structure/navbar/ElementListRenderer';
+import useConfigurationStore from '@/app/store/configurationStore';
 
 export interface INavbar {
   className: string;
@@ -23,10 +24,17 @@ interface IProps {
 }
 
 const NavbarStructure = ({entries}: IProps) => {
+  const {selectElement} = useConfigurationStore.getState();
+
   return (
     <div>
-      <p className={'text-base font-bold'}>NAVBAR</p>
-      <ElementListRenderer ml={4} content={entries} />
+      <p
+        className={'text-xs font-bold hover:text-blue-700 cursor-pointer'}
+        onClick={() => selectElement({entries, scope: 'navbar'})}
+      >
+        NAVBAR
+      </p>
+      <ElementListRenderer ml={0} content={entries} />
     </div>
   );
 };

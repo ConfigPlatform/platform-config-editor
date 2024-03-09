@@ -1,18 +1,16 @@
 import {get} from 'lodash';
-import ElementListRenderer from '@/app/component/schema/navbar/ElementListRenderer';
 import componentMap from '@/app/component/schema/page/componentMap';
+import Navbar from '@/app/component/schema/navbar/Navbar';
 
 interface IProps {
   element: object;
 }
 
-const NavbarElementRenderer = ({element}: IProps) => {
+const ElementRenderer = ({element}: IProps) => {
   const type = get(element, 'type', '');
 
-  // only for page
   if (!type) {
-    const content = get(element, 'content', []);
-    return <ElementListRenderer content={content} />;
+    return <Navbar content={element} />;
   }
 
   const Component = componentMap[type];
@@ -20,4 +18,4 @@ const NavbarElementRenderer = ({element}: IProps) => {
   return <>{Component ? <Component {...element} /> : null}</>;
 };
 
-export default NavbarElementRenderer;
+export default ElementRenderer;

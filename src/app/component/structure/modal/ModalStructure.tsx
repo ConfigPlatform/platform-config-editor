@@ -27,7 +27,7 @@ const ModalStructure = ({entries}: IProps) => {
 
   return (
     <div>
-      <p className={'text-base font-bold'}>MODAL</p>
+      <p className={'font-bold text-xs'}>MODAL</p>
       {entries.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
@@ -36,7 +36,7 @@ const ModalStructure = ({entries}: IProps) => {
           >
             {el.id}
           </b>
-          <ElementListRenderer ml={4} content={el.content} title="modals" />
+          <ElementListRenderer ml={0} content={el.content} title="modals" />
         </div>
       ))}
     </div>

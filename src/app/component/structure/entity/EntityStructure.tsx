@@ -9,8 +9,8 @@ interface IProps {
 const EntityStructure = ({entries}: IProps) => {
   return (
     <div>
-      <p className={'text-base font-bold'}>ENTITY</p>
-      <ElementListRenderer ml={4} entities={entries} />
+      <p className={'text-xs font-bold'}>ENTITY</p>
+      <ElementListRenderer ml={0} entities={entries} />
     </div>
   );
 };
