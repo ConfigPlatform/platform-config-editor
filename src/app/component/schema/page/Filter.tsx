@@ -7,7 +7,7 @@ const Filter = (props: object) => {
   return (
     <div className="border-dashed border border-yellow-500 p-1 m-2">
       <BlockLabel label={'Filter'} />
-      {filterBy}
+      <p className={'text-sm'}>{filterBy}</p>
     </div>
   );
 };

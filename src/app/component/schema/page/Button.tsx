@@ -12,7 +12,7 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
   return (
     <div className="border-dashed border border-lime-500 p-1 m-2">
       <BlockLabel label={'Button'} />
-      <p>{text}</p>
+      <p className={'text-sm'}>{text}</p>
     </div>
   );
 };
