@@ -5,14 +5,15 @@ import {get} from 'lodash';
 import schemaMap from '@/app/component/schema/schemaMap';
 
 const Schema = () => {
-  const selectedElement = useConfigurationStore((state) => get(state, 'selectedElement', {}));
-  const schema = get(selectedElement, 'structure', '');
+  const selected = useConfigurationStore((state) => get(state, 'selected', {}));
 
-  const SchemaRenderer = schemaMap[schema];
+  const {scope, entries} = selected;
+
+  const SchemaRenderer = schemaMap[scope];
 
   return (
     <div className={'w-8/12 flex items-start justify-start flex-col p-2'}>
-      {SchemaRenderer ? <SchemaRenderer element={selectedElement} /> : null}
+      {SchemaRenderer ? <SchemaRenderer element={entries} /> : null}
     </div>
   );
 };

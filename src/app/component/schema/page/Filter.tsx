@@ -1,5 +1,5 @@
 import {get} from 'lodash';
-import BlockLabel from '@/app/component/schema/page/BlockLabel';
+import BlockLabel from '@/app/component/schema/BlockLabel';
 
 const Filter = (props: object) => {
   const filterBy = get(props, 'filterBy', '');
@@ -7,7 +7,7 @@ const Filter = (props: object) => {
   return (
     <div className="border-dashed border border-yellow-500 p-1 m-2">
       <BlockLabel label={'Filter'} />
-      {filterBy}
+      <p className={'text-sm'}>{filterBy}</p>
     </div>
   );
 };

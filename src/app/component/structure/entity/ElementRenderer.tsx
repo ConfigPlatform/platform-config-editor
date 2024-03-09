@@ -19,7 +19,7 @@ const ElementRenderer = ({entity, ml}: IProps) => {
       <p
         className={'hover:text-blue-700 cursor-pointer font-bold'}
         style={{marginLeft: `${ml}px`}}
-        onClick={() => selectElement({element: entity, structure: 'entity'})}
+        onClick={() => selectElement({entries: entity, scope: 'entity'})}
       >
         {name}
       </p>

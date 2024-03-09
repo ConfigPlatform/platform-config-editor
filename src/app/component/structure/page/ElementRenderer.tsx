@@ -7,7 +7,6 @@ import useConfigurationStore from '@/app/store/configurationStore';
 interface IProps {
   ml: number;
   element: object;
-  title?: string;
 }
 
 const ElementRenderer = ({element, ml}: IProps) => {
@@ -21,7 +20,7 @@ const ElementRenderer = ({element, ml}: IProps) => {
       <p
         className={'hover:text-blue-700 cursor-pointer'}
         style={{marginLeft: `${ml}px`}}
-        onClick={() => selectElement({element, structure: 'page'})}
+        onClick={() => selectElement({entries: element, scope: 'page'})}
       >
         {type}
       </p>
