@@ -2,8 +2,6 @@ import axios, {AxiosRequestConfig} from 'axios';
 import {get as getl} from 'lodash';
 import {IHttpMethod} from './types';
 
-const { NEXT_PUBLIC_CLIENT_ORIGIN } = process.env;
-
 const getHeaders = (type: string): {[key: string]: string} => ({
   'Content-Type': type || 'application/json',
 });
