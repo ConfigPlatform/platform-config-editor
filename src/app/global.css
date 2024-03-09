@@ -5,7 +5,7 @@
 @layer base {
   /* width */
   ::-webkit-scrollbar {
-    @apply w-2;
+    @apply w-1;
   }
 
   /* Track */

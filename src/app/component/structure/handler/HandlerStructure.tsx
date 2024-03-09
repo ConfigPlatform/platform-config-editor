@@ -14,19 +14,20 @@ export interface IHandler {
 }
 
 interface IProps {
-  handlers: IHandler[];
+  entries: IHandler[];
 }
 
-const HandlerStructure = ({handlers}: IProps) => {
+const HandlerStructure = ({entries}: IProps) => {
   const {selectElement} = useConfigurationStore.getState();
 
   return (
     <div>
-      {handlers.map((el) => (
+      <p className={'text-base font-bold'}>HANDLER</p>
+      {entries.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
             className={'hover:text-blue-700 cursor-pointer'}
-            onClick={() => selectElement({element: el, structure: 'handler'})}
+            onClick={() => selectElement({entries: el, scope: 'handler'})}
           >
             {el.name}
           </b>

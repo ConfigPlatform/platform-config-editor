@@ -19,11 +19,16 @@ export interface IContentContent {
 }
 
 interface IProps {
-  navbar: object;
+  entries: object;
 }
 
-const NavbarStructure = ({navbar}: IProps) => {
-  return <ElementListRenderer ml={4} content={navbar} />;
+const NavbarStructure = ({entries}: IProps) => {
+  return (
+    <div>
+      <p className={'text-base font-bold'}>NAVBAR</p>
+      <ElementListRenderer ml={4} content={entries} />
+    </div>
+  );
 };
 
 export default NavbarStructure;

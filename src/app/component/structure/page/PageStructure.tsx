@@ -10,15 +10,16 @@ export interface Page {
 }
 
 export interface IProps {
-  pages: Page[];
+  entries: Page[];
 }
 
-const PageStructure = ({pages}: IProps) => {
+const PageStructure = ({entries}: IProps) => {
   const {selectElement} = useConfigurationStore.getState();
 
   return (
     <div>
-      {pages.map((el) => (
+      <p className={'text-base font-bold'}>PAGE</p>
+      {entries.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
             className={'hover:text-blue-700 cursor-pointer'}

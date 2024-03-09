@@ -15,23 +15,24 @@ type IContentModal = {
   type: 'text' | 'container' | 'form';
   className?: string;
   value?: string;
-  content?: Array<IContentModal | Form>;
+  content?: object[];
 };
 
 export interface IProps {
-  modals: IModal[];
+  entries: IModal[];
 }
 
-const ModalStructure = ({modals}: IProps) => {
+const ModalStructure = ({entries}: IProps) => {
   const {selectElement} = useConfigurationStore.getState();
 
   return (
     <div>
-      {modals.map((el) => (
+      <p className={'text-base font-bold'}>MODAL</p>
+      {entries.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
             className={'hover:text-blue-700 cursor-pointer'}
-            onClick={() => selectElement({element: el, structure: 'modal'})}
+            onClick={() => selectElement({entries: el, scope: 'modal'})}
           >
             {el.id}
           </b>

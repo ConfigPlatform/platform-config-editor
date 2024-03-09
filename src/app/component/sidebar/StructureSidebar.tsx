@@ -18,16 +18,11 @@ const StructureSidebar = () => {
 
   return (
     <aside className={'h-screen w-1/12 border-gray-200 bg-gray-100 pl-2 overflow-y-auto overflow-x-hidden'}>
-      <h3 className="font-bold">Pages:</h3>
-      <PageStructure pages={pages as Page[]} />
-      <h3 className="font-bold mt-5">Entities:</h3>
-      <EntityStructure entities={entities as IEntity[]} />
-      <h3 className="font-bold mt-5">Navbar:</h3>
-      <NavbarStructure navbar={navbar as INavbar[]} />
-      <h3 className="font-bold mt-5">Modals:</h3>
-      <ModalStructure modals={modals as IModal[]} />
-      <h3 className="font-bold mt-5">Handlers:</h3>
-      <HandlerStructure handlers={handlers as IHandler[]} />
+      <PageStructure entries={pages as Page[]} />
+      <EntityStructure entries={entities as IEntity[]} />
+      <NavbarStructure entries={navbar as INavbar[]} />
+      <ModalStructure entries={modals as IModal[]} />
+      <HandlerStructure entries={handlers as IHandler[]} />
     </aside>
   );
 };
