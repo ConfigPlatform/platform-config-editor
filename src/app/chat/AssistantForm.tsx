@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const configScopes: string[] = ['Page', 'Handler', 'Entity', 'Menu', 'Modal', 'Sidepanel', 'Footer'];
 
-const UpdateConfigurationForm = () => {
+const AssistantForm = () => {
   const [comment, setComment] = useState<string>('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -70,4 +70,4 @@ const UpdateConfigurationForm = () => {
   );
 };
 
-export default UpdateConfigurationForm;
+export default AssistantForm;

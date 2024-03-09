@@ -1,7 +1,7 @@
-import UpdateConfigurationForm from "@/app/chat/UpdateConfigurationForm";
+import UpdateConfigurationForm from '@/app/chat/AssistantForm';
 
 const Page = () => {
-    return <UpdateConfigurationForm />
-}
+  return <UpdateConfigurationForm />;
+};
 
-export default Page
+export default Page;
