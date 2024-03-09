@@ -1,5 +1,5 @@
 import {get} from 'lodash';
-import BlockLabel from '@/app/component/schema/page/BlockLabel';
+import BlockLabel from '@/app/component/schema/BlockLabel';
 
 const Filter = (props: object) => {
   const filterBy = get(props, 'filterBy', '');

@@ -1,6 +1,6 @@
 import React from 'react';
 import {FC} from 'react';
-import BlockLabel from '@/app/component/schema/page/BlockLabel';
+import BlockLabel from '@/app/component/schema/BlockLabel';
 
 interface IProps {
   name: string;

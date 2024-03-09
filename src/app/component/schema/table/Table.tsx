@@ -1,7 +1,7 @@
 import React from 'react';
 import Column from './Column';
 import {get} from 'lodash';
-import BlockLabel from '@/app/component/schema/page/BlockLabel';
+import BlockLabel from '@/app/component/schema/BlockLabel';
 
 interface IColumns {
   type: 'container';

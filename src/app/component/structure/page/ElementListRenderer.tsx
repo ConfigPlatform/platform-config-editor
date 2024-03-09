@@ -4,10 +4,9 @@ import ElementRenderer from '@/app/component/structure/page/ElementRenderer';
 interface IProps {
   ml: number;
   content: object[];
-  title?: string;
 }
 
-const ElementListRenderer = ({content, ml, title}: IProps) => {
+const ElementListRenderer = ({content, ml}: IProps) => {
   return (
     <>
       {content.map((el) => (

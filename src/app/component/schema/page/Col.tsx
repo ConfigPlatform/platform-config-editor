@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import {get} from 'lodash';
 import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
-import BlockLabel from '@/app/component/schema/page/BlockLabel';
+import BlockLabel from '@/app/component/schema/BlockLabel';
 
 interface ButtonProps {
   children: ReactNode;

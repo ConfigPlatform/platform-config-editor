@@ -1,6 +1,6 @@
 import {get} from 'lodash';
 import React from 'react';
-import BlockLabel from '@/app/component/schema/page/BlockLabel';
+import BlockLabel from '@/app/component/schema/BlockLabel';
 
 const Text = (props: object) => {
   const value = get(props, 'value', '');
