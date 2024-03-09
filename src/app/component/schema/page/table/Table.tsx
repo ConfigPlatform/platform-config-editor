@@ -1,7 +1,7 @@
 import React from 'react';
 import Column from './Column';
 import {get} from 'lodash';
-import BlockLabel from '@/app/component/schema/page/BlockLabel';
+import BlockLabel from '@/app/component/schema/BlockLabel';
 
 interface IColumns {
   type: 'container';
@@ -20,7 +20,7 @@ interface IColumns {
   };
 }
 
-const FormLayoutComponent = (props: any) => {
+const Table = (props: any) => {
   const columns: IColumns[] = get(props, 'columns', []);
 
   return (
@@ -37,4 +37,4 @@ const FormLayoutComponent = (props: any) => {
   );
 };
 
-export default FormLayoutComponent;
+export default Table;

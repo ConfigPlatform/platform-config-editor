@@ -1,5 +1,4 @@
 import {get} from 'lodash';
-import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 import componentMap from '@/app/component/schema/page/componentMap';
 
 interface IProps {
@@ -7,13 +6,7 @@ interface IProps {
 }
 
 const ElementRenderer = ({element}: IProps) => {
-  const type = get(element, 'type', '');
-
-  // only for page
-  if (!type) {
-    const content = get(element, 'content', []);
-    return <ElementListRenderer content={content} />;
-  }
+  const type = get(element, 'type', 'page');
 
   const Component = componentMap[type];
 
