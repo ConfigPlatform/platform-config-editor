@@ -1,31 +1,18 @@
 import React from 'react';
-import Column from './Column';
-import {get} from 'lodash';
+import Column, {IColumn} from './Column';
 import BlockLabel from '@/app/component/schema/BlockLabel';
 
-interface IColumns {
-  type: 'container';
-  className: string;
-  name: string;
-  sortable: boolean;
-  cell: {
-    className: string;
-    content: {
-      type: string;
-      value: string;
-      vars: {
-        id: string;
-      };
-    }[];
-  };
+interface ITable {
+  select: string;
+  columns: IColumn[];
 }
 
-const Table = (props: any) => {
-  const columns: IColumns[] = get(props, 'columns', []);
-
+const Table = ({select, columns}: ITable) => {
   return (
     <div className="border-dashed border border-blue-500 p-1 m-2">
       <BlockLabel label={'Table'} />
+
+      <p className={'text-sm my-1'}>Select: {select}</p>
 
       {/* Контейнер для колонок */}
       <div className="flex flex-row">

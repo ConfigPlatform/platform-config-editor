@@ -1,10 +1,15 @@
-import {get} from 'lodash';
-import BlockLabel from '@/app/component/schema/page/BlockLabel';
+import BlockLabel from '@/app/component/schema/BlockLabel';
+import React from 'react';
 
-const Pagination = (props: object) => {
+interface IPagination {
+  select: string;
+}
+
+const Pagination = ({select}: IPagination) => {
   return (
     <div className="border-dashed border border-fuchsia-500 p-1 m-2">
       <BlockLabel label={'Pagination'} />
+      <p className={'text-sm'}>Select: {select}</p>
     </div>
   );
 };
