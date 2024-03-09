@@ -5,7 +5,7 @@ import useConfigurationStore from '@/app/store/configurationStore';
 import {omit} from 'lodash';
 
 const AssistantForm = () => {
-  const selectedElement = useConfigurationStore((state) => state.selectedElement);
+  const selected = useConfigurationStore((state) => state.selected);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -13,12 +13,10 @@ const AssistantForm = () => {
     const formData = new FormData(e.target);
     const task = formData.get('task');
 
-    const entries = omit(selectedElement, ['structure']);
-
     const response = await axios.patch(`api/configuration`, {
       task,
-      scope: selectedElement.structure,
-      entries: JSON.stringify(entries, null, 2),
+      scope: selected.scope,
+      entries: JSON.stringify(selected.entries, null, 2),
     });
 
     console.log(response);
