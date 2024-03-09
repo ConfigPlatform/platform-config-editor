@@ -8,13 +8,13 @@ interface IProps {
   dataType?: any;
 }
 
-const ColumnComponent: FC<IProps> = ({name}) => {
+const Column: FC<IProps> = ({name}) => {
   return (
-    <div className={'border-dashed border border-cyan-500 p-1 m-1'}>
+    <div className={'border-dashed border border-blue-600 p-1 m-2'}>
       <BlockLabel label={'Column'} />
       {name}
     </div>
   );
 };
 
-export default ColumnComponent;
+export default Column;

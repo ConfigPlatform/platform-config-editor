@@ -20,7 +20,7 @@ interface IColumns {
   };
 }
 
-const FormLayoutComponent = (props: any) => {
+const Table = (props: any) => {
   const columns: IColumns[] = get(props, 'columns', []);
 
   return (
@@ -37,4 +37,4 @@ const FormLayoutComponent = (props: any) => {
   );
 };
 
-export default FormLayoutComponent;
+export default Table;

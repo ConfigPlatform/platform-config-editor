@@ -6,7 +6,7 @@ import BlockLabel from '@/app/component/schema/BlockLabel';
 const Row = (props: object) => {
   const content = get(props, 'content', []);
 
-  const elementClass: string = 'flex flex-wrap my-4';
+  const elementClass: string = 'flex flex-wrap';
   const editorClass: string = 'border-dashed border border-emerald-500 p-1 m-2';
 
   return (
