@@ -18,12 +18,8 @@ const PageStructure = ({entries}: IProps) => {
 
   return (
     <div>
-      <p
-        className={'text-xs font-bold hover:text-blue-700 cursor-pointer'}
-        onClick={() => selectElement({entries, scope: 'page'})}
-      >
-        PAGE
-      </p>
+      <p className={'text-xs font-bold'}>PAGE</p>
+
       {entries.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
@@ -32,7 +28,6 @@ const PageStructure = ({entries}: IProps) => {
           >
             {el.path}
           </b>
-          <ElementListRenderer ml={0} content={el.content} />
         </div>
       ))}
     </div>

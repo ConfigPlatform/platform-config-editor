@@ -1,6 +1,5 @@
 'use client';
 
-import ElementListRenderer from '@/app/component/structure/navbar/ElementListRenderer';
 import useConfigurationStore from '@/app/store/configurationStore';
 
 export interface INavbar {
@@ -34,7 +33,6 @@ const NavbarStructure = ({entries}: IProps) => {
       >
         NAVBAR
       </p>
-      <ElementListRenderer ml={0} content={entries} />
     </div>
   );
 };

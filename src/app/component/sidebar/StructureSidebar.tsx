@@ -17,7 +17,7 @@ const StructureSidebar = () => {
   const handlers = useConfigurationStore((state) => get(state, 'configuration.handlers', []));
 
   return (
-    <aside className={'h-screen w-1/12 border-gray-200 bg-gray-100 pl-0.5 overflow-y-auto overflow-x-hidden'}>
+    <aside className={'h-screen w-1/12 border-gray-200 bg-gray-100 overflow-y-auto overflow-x-hidden p-2'}>
       <PageStructure entries={pages as Page[]} />
       <hr className={'h-px my-4 bg-gray-400 border-0'} />
       <EntityStructure entries={entities as IEntity[]} />

@@ -5,12 +5,10 @@ import Col from '@/app/component/schema/page/Col';
 import Table from '@/app/component/schema/page/table/Table';
 import Filter from '@/app/component/schema/page/Filter';
 import Pagination from '@/app/component/schema/page/Pagination';
-import Page from '@/app/component/schema/page/Page';
 import Form from '@/app/component/schema/page/form/Form';
 import Link from '@/app/component/schema/page/Link';
 
 const componentMap: {[name: string]: any} = {
-  page: Page,
   text: Text,
   link: Link,
   button: Button,
