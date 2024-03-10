@@ -1,5 +1,3 @@
-'use client';
-
 import PageElementRenderer from '@/app/component/schema/page/ElementRenderer';
 
 interface IProps {

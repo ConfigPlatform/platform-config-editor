@@ -1,12 +1,13 @@
 'use client';
 
 import {get} from 'lodash';
-import ElementListRenderer from '@/app/component/structure/page/ElementListRenderer';
+import ElementListRenderer from '@/app/component/structure/navbar/ElementListRenderer';
 import useConfigurationStore from '@/app/store/configurationStore';
 
 interface IProps {
   ml: number;
   element: object;
+  title?: string;
 }
 
 const ElementRenderer = ({element, ml}: IProps) => {
@@ -20,7 +21,7 @@ const ElementRenderer = ({element, ml}: IProps) => {
       <p
         className={'hover:text-blue-700 cursor-pointer text-xs'}
         style={{marginLeft: `${ml}px`}}
-        onClick={() => selectElement({entries: element, scope: 'page'})}
+        onClick={() => selectElement({entries: element, scope: 'navbar'})}
       >
         {type}
       </p>

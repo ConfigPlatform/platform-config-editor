@@ -10,23 +10,29 @@ export interface Page {
 }
 
 export interface IProps {
-  pages: Page[];
+  entries: Page[];
 }
 
-const PageStructure = ({pages}: IProps) => {
+const PageStructure = ({entries}: IProps) => {
   const {selectElement} = useConfigurationStore.getState();
 
   return (
     <div>
-      {pages.map((el) => (
+      <p
+        className={'text-xs font-bold hover:text-blue-700 cursor-pointer'}
+        onClick={() => selectElement({entries, scope: 'page'})}
+      >
+        PAGE
+      </p>
+      {entries.map((el) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
-            className={'hover:text-blue-700 cursor-pointer'}
-            onClick={() => selectElement({element: el, structure: 'page'})}
+            className={'hover:text-blue-700 cursor-pointer text-xs'}
+            onClick={() => selectElement({entries: el, scope: 'page'})}
           >
             {el.path}
           </b>
-          <ElementListRenderer ml={4} content={el.content} title="pages" />
+          <ElementListRenderer ml={0} content={el.content} />
         </div>
       ))}
     </div>

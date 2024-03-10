@@ -1,9 +1,10 @@
 import {nanoid} from 'nanoid';
-import ElementRenderer from '@/app/component/structure/page/ElementRenderer';
+import ElementRenderer from '@/app/component/structure/navbar/ElementRenderer';
 
 interface IProps {
   ml: number;
   content: object[];
+  title?: string;
 }
 
 const ElementListRenderer = ({content, ml}: IProps) => {
