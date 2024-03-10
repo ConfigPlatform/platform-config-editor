@@ -3,6 +3,7 @@
 import useConfigurationStore from '@/app/store/configurationStore';
 import {get} from 'lodash';
 import PageStructure, {Page} from '@/app/component/structure/page/PageStructure';
+import SidepanelStructure from '@/app/component/structure/sidepanel/SidepanelStructure';
 import EntityStructure from '@/app/component/structure/entity/EntityStructure';
 import NavbarStructure, {INavbar} from '@/app/component/structure/navbar/NavbarStructure';
 import {IEntity} from '@/app/component/structure/entity/ElementListRenderer';
@@ -11,6 +12,7 @@ const StructureSidebar = () => {
   const pages = useConfigurationStore((state) => get(state, 'configuration.pages', []));
   const entities = useConfigurationStore((state) => get(state, 'configuration.entities', []));
   const navbar = useConfigurationStore((state) => get(state, 'configuration.navbar', []));
+  const sidepanel = useConfigurationStore((state) => get(state, 'configuration.sidepanels', []));
 
   return (
     <aside className={'h-screen w-64 border-gray-200 bg-gray-100 pl-5 overflow-y-auto overflow-x-hidden'}>
@@ -20,6 +22,8 @@ const StructureSidebar = () => {
       <EntityStructure entities={entities as IEntity[]} />
       <h3 className="font-bold mt-5">Navbar:</h3>
       <NavbarStructure navbar={navbar as INavbar[]} />
+      <h3 className="font-bold mt-5">Sidepanel:</h3>
+      <SidepanelStructure sidepanel={sidepanel as ISidepanel[]} />
     </aside>
   );
 };
