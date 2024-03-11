@@ -12,7 +12,7 @@ const PropertyEditField = ({property}: IPropertyEditField) => {
 
   const [value, setValue] = useState(defaultValue);
 
-  const readOnlyProperties: string[] = ['content'];
+  const readOnlyProperties: string[] = ['content', 'columns'];
 
   useEffect(() => {
     updateField({property, value});
@@ -26,9 +26,10 @@ const PropertyEditField = ({property}: IPropertyEditField) => {
   if (readOnlyProperties.includes(property)) {
     return (
       <div className={'my-1'}>
-        <p>
-          {property}: <b>elements</b>
-        </p>
+        <div className={'flex flex-row'}>
+          <p className={'mr-2'}>{property}:</p>
+          <p className={'font-medium'}>elements</p>
+        </div>
       </div>
     );
   }

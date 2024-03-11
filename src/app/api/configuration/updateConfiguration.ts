@@ -8,7 +8,7 @@ const {CONFIG_BUILDER_PATH} = process.env;
 const generateConfiguration = async (req: NextRequest) => {
   const data = await req.json();
 
-  const {path, elementConfiguration, scope} = data;
+  const {path, elementConfigUpdates, scope} = data;
 
   // compose config file path
   const configPath = mergePath(CONFIG_BUILDER_PATH!, '_config');
@@ -17,8 +17,13 @@ const generateConfiguration = async (req: NextRequest) => {
   // get existing configuration
   const configuration = JSON.parse(fs.readFileSync(configFilePath, 'utf8'));
 
-  // update existing config
-  set(configuration, path, elementConfiguration);
+  // loop through configuration updates to apply for main object
+  for (const property in elementConfigUpdates) {
+    const value = elementConfigUpdates[property];
+
+    // update existing configuration
+    set(configuration, `${path}[${property}]`, value);
+  }
 
   const configurationStr = JSON.stringify(configuration, null, 2);
 

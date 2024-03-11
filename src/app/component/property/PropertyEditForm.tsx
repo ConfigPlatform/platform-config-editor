@@ -26,7 +26,7 @@ const PropertyEditForm = () => {
     // update configuration
     await patchRequest({
       url: '/api/configuration',
-      data: {path: elementPath, elementConfiguration: configuration, scope},
+      data: {path: elementPath, elementConfigUpdates: configuration, scope},
     });
 
     // reset selected element
