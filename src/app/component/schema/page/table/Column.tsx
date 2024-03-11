@@ -16,7 +16,7 @@ const Column: FC<IColumn> = (props) => {
   return (
     <div className={'mx-1 m-2'}>
       <ComponentSelect path={path}>
-        <div className={'border-dashed border border-blue-600 p-1'}>
+        <div className={'border-dashed border border-teal-500 p-1'}>
           <BlockLabel label={'Column'} />
           <p className={'text-sm'}>{name}</p>
         </div>

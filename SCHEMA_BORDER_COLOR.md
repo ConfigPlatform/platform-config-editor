@@ -10,4 +10,4 @@ Filter - yellow-500
 Pagination - fuchsia-500
 Page - purple-500
 Form - red-500
-Form field - red-600
+Form field - green-500

@@ -12,7 +12,7 @@ const PropertyEditField = ({property}: IPropertyEditField) => {
 
   const [value, setValue] = useState(defaultValue);
 
-  const readOnlyProperties: string[] = ['content', 'columns'];
+  const readOnlyProperties: string[] = ['content', 'columns', 'actions', 'fields'];
 
   useEffect(() => {
     updateField({property, value});
