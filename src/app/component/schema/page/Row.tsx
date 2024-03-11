@@ -2,17 +2,25 @@ import React from 'react';
 import {get} from 'lodash';
 import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 import BlockLabel from '@/app/component/schema/BlockLabel';
+import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
 
-const Row = (props: object) => {
+interface IProps {
+  content: object[];
+  path: string;
+}
+
+const Row = (props: IProps) => {
   const content = get(props, 'content', []);
-
-  const elementClass: string = 'flex flex-wrap';
-  const editorClass: string = 'border-dashed border border-emerald-500 p-1 m-2';
+  const path = get(props, 'path', '');
 
   return (
-    <div className={`${editorClass} ${elementClass}`}>
-      <BlockLabel label={'Row'} />
-      <ElementListRenderer content={content} />
+    <div className={'m-2'}>
+      <ComponentSelect path={path}>
+        <div className={'flex flex-wrap border-dashed border border-emerald-500 p-1'}>
+          <BlockLabel label={'Row'} />
+          <ElementListRenderer content={content} path={`${path}.content`} />
+        </div>
+      </ComponentSelect>
     </div>
   );
 };

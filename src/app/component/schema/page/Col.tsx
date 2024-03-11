@@ -2,22 +2,28 @@ import React, {ReactNode} from 'react';
 import {get} from 'lodash';
 import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 import BlockLabel from '@/app/component/schema/BlockLabel';
+import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
 
-interface ButtonProps {
+interface IProps {
   children: ReactNode;
+  path: string;
 }
 
-const Col: React.FC<ButtonProps> = (props: ButtonProps) => {
+const Col: React.FC<IProps> = (props) => {
   const content = get(props, 'content', []);
+  const path = get(props, 'path', '');
 
   const colWidth = get(props, 'width', 'w-full');
   const elementWidth: string = (+colWidth / 12) * 100 - 1 + '%';
-  const editorClass: string = 'border-dashed border border-indigo-500 p-1 m-2';
 
   return (
-    <div style={{width: elementWidth}} className={editorClass}>
-      <BlockLabel label={'Column'} />
-      <ElementListRenderer content={content} />
+    <div className={'m-2'} style={{width: elementWidth}}>
+      <ComponentSelect path={path}>
+        <div className={'border-dashed border border-indigo-500 p-1'}>
+          <BlockLabel label={'Column'} />
+          <ElementListRenderer content={content} path={`${path}.content`} />
+        </div>
+      </ComponentSelect>
     </div>
   );
 };

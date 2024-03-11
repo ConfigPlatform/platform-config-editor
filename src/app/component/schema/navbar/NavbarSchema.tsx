@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const NavbarSchema = ({element}: IProps) => {
-  return <ElementRenderer element={element} />;
+  return <ElementRenderer element={element} path={'navbar'} />;
 };
 
 export default NavbarSchema;

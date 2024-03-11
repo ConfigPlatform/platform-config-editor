@@ -3,13 +3,14 @@ import ElementRenderer from '@/app/component/schema/page/ElementRenderer';
 
 interface IProps {
   content: object[];
+  path: string;
 }
 
-const ElementListRenderer = ({content}: IProps) => {
+const ElementListRenderer = ({content, path}: IProps) => {
   return (
     <>
-      {content.map((el) => (
-        <ElementRenderer key={nanoid()} element={el} />
+      {content.map((el, i) => (
+        <ElementRenderer key={nanoid()} element={el} path={`${path}[${i}]`} />
       ))}
     </>
   );

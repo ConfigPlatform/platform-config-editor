@@ -1,7 +1,6 @@
 'use client';
 
 import {nanoid} from 'nanoid';
-import ElementListRenderer from '@/app/component/structure/page/ElementListRenderer';
 import useConfigurationStore from '@/app/store/configurationStore';
 
 export interface Page {
@@ -14,17 +13,15 @@ export interface IProps {
 }
 
 const PageStructure = ({entries}: IProps) => {
-  const {selectElement} = useConfigurationStore.getState();
-
   return (
     <div>
       <p className={'text-xs font-bold'}>PAGE</p>
 
-      {entries.map((el) => (
+      {entries.map((el, i) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
             className={'hover:text-blue-700 cursor-pointer text-xs'}
-            onClick={() => selectElement({entries: el, scope: 'page'})}
+            onClick={() => useConfigurationStore.setState({structurePath: `pages[${i}]`})}
           >
             {el.path}
           </b>

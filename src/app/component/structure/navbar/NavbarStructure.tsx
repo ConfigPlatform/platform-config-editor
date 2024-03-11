@@ -23,13 +23,11 @@ interface IProps {
 }
 
 const NavbarStructure = ({entries}: IProps) => {
-  const {selectElement} = useConfigurationStore.getState();
-
   return (
     <div>
       <p
         className={'text-xs font-bold hover:text-blue-700 cursor-pointer'}
-        onClick={() => selectElement({entries, scope: 'navbar'})}
+        onClick={() => useConfigurationStore.setState({structurePath: 'navbar'})}
       >
         NAVBAR
       </p>

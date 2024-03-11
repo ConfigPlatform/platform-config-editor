@@ -14,26 +14,30 @@ export interface IConfiguration {
 
 interface IState {
   configuration: Partial<IConfiguration>;
-  selected: Partial<{
-    entries: object;
-    scope: string;
-  }>;
+  structurePath: string;
+  selectedPathList: string[];
+  elementPath: string;
   loading: boolean;
   error: Error | null;
   getConfiguration: () => Promise<void>;
-  selectElement: (payload: {entries: object; scope: string}) => void;
+  addSelectedPath: (payload: string) => void;
   reset: () => void;
 }
 
-const initialState: Pick<IState, 'configuration' | 'selected' | 'loading' | 'error'> = {
+const initialState: Pick<
+  IState,
+  'configuration' | 'selectedPathList' | 'structurePath' | 'elementPath' | 'loading' | 'error'
+> = {
   configuration: {},
-  selected: {},
+  selectedPathList: [],
+  structurePath: '',
+  elementPath: '',
   loading: false,
   error: null,
 };
 
 const useConfigurationStore = create<IState>()(
-  devtools((set) => ({
+  devtools((set, get) => ({
     ...initialState,
 
     getConfiguration: async () => {
@@ -41,8 +45,12 @@ const useConfigurationStore = create<IState>()(
       set({configuration});
     },
 
-    selectElement: (payload) => {
-      set({selected: payload});
+    addSelectedPath: (path) => {
+      const selectedPathList = get().selectedPathList;
+
+      selectedPathList.unshift(path);
+
+      set({selectedPathList});
     },
 
     reset: () => set(initialState),

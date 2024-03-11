@@ -1,19 +1,31 @@
 import {NextRequest} from 'next/server';
-import axios from 'axios';
+import mergePath from '@/app/util/mergePath';
+import fs from 'fs-extra';
+import {set} from 'lodash';
 
-const {HELPER_SERVER_ORIGIN} = process.env;
+const {CONFIG_BUILDER_PATH} = process.env;
 
-const updateConfiguration = async (req: NextRequest) => {
-  const formData = await req.json();
+const generateConfiguration = async (req: NextRequest) => {
+  const data = await req.json();
 
-  const {task, scope, entries} = formData;
+  const {path, elementConfiguration, scope} = data;
 
-  // update configuration
-  const response = await axios.patch(`${HELPER_SERVER_ORIGIN}/configuration`, {task, scope, entries});
+  // compose config file path
+  const configPath = mergePath(CONFIG_BUILDER_PATH!, '_config');
+  const configFilePath = mergePath(configPath, `config.${scope}.json`);
 
-  const configuration = response.data;
+  // get existing configuration
+  const configuration = JSON.parse(fs.readFileSync(configFilePath, 'utf8'));
 
-  return Response.json({configuration});
+  // update existing config
+  set(configuration, path, elementConfiguration);
+
+  const configurationStr = JSON.stringify(configuration, null, 2);
+
+  // update file
+  fs.writeFileSync(configFilePath, configurationStr);
+
+  return Response.json({});
 };
 
-export default updateConfiguration;
+export default generateConfiguration;

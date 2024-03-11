@@ -31,7 +31,7 @@ const HandlerStructure = ({entries}: IProps) => {
           >
             {el.name}
           </b>
-          <ElementListRenderer ml={0} actions={el.actions} title="handlers" />
+          <ElementListRenderer ml={0} actions={el.actions} />
         </div>
       ))}
     </div>

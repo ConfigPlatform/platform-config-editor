@@ -16,7 +16,7 @@ const getConfiguration = async () => {
   const entities = JSON.parse(fs.readFileSync(entityConfigPath, 'utf8')).entities;
   const footer = JSON.parse(fs.readFileSync(footerConfigPath, 'utf8'));
   const handlers = JSON.parse(fs.readFileSync(handlerConfigPath, 'utf8')).handlers;
-  const navbar = JSON.parse(fs.readFileSync(navbarConfigPath, 'utf8')).content;
+  const navbar = JSON.parse(fs.readFileSync(navbarConfigPath, 'utf8')).navbar;
   const modals = JSON.parse(fs.readFileSync(modalConfigPath, 'utf8')).modals;
   const pages = JSON.parse(fs.readFileSync(pageConfigPath, 'utf8')).pages;
   const sidepanels = JSON.parse(fs.readFileSync(sidepanelConfigPath, 'utf8')).sidepanels;

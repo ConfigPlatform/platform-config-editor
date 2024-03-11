@@ -11,18 +11,12 @@ interface IProps {
 }
 
 const ElementRenderer = ({element, ml}: IProps) => {
-  const {selectElement} = useConfigurationStore.getState();
-
   const type = get(element, 'type', '');
   const content = get(element, 'content', []);
 
   return (
     <div>
-      <p
-        className={'hover:text-blue-700 cursor-pointer text-xs'}
-        style={{marginLeft: `${ml}px`}}
-        onClick={() => selectElement({entries: element, scope: 'navbar'})}
-      >
+      <p className={'hover:text-blue-700 cursor-pointer text-xs'} style={{marginLeft: `${ml}px`}}>
         {type}
       </p>
       <ElementListRenderer ml={ml} content={content} />

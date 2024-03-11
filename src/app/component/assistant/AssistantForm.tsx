@@ -13,7 +13,7 @@ const AssistantForm = () => {
     const formData = new FormData(e.target);
     const task = formData.get('task');
 
-    const response = await axios.patch(`api/configuration`, {
+    const response = await axios.patch(`api/configuration/generate`, {
       task,
       scope: selected.scope,
       entries: JSON.stringify(selected.entries, null, 2),
@@ -27,16 +27,16 @@ const AssistantForm = () => {
       <form onSubmit={handleSubmit} className="w-full max-w-xl">
         <div>
           <textarea
-            className="form-textarea mt-1 p-2 block w-full rounded-lg ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="form-textarea text-sm mt-1 p-2 block w-full rounded-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             rows={4}
             placeholder="Your task here..."
             name={'task'}
           ></textarea>
         </div>
-        <div className="flex items-center justify-start pt-2">
+        <div className="flex items-center justify-start pt-1">
           <button
             type={'submit'}
-            className="py-2 px-8 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-400 focus:ring-opacity-75"
+            className="px-4 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ml-0 m-1"
           >
             Send
           </button>
