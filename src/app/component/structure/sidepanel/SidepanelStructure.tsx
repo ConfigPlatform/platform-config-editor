@@ -35,7 +35,7 @@ const SidepanelStructure = ({sidepanel}: IProps) => {
             className={'hover:text-blue-700 cursor-pointer text-xs'}
             onClick={() => useConfigurationStore.setState({structurePath: `sidepanels[${i}]`})}
           >
-            {el.path}
+            {el.id}
           </b>
         </div>
       ))}
