@@ -8,6 +8,7 @@ import usePropertyEditStore from '@/app/store/propertyEditStore';
 
 const PropertyEditForm = () => {
   const {getConfiguration} = useConfigurationStore.getState();
+  const configurationMap = useConfigurationStore((state) => state.configuration);
   const elementPath = useConfigurationStore((state) => state.elementPath);
 
   const elementConfiguration = useConfigurationStore((state) => get(state, `configuration.${elementPath}`, {}));
@@ -26,7 +27,7 @@ const PropertyEditForm = () => {
     // update configuration
     await patchRequest({
       url: '/api/configuration',
-      data: {path: elementPath, elementConfigUpdates: configuration, scope},
+      data: {path: elementPath, configUpdates: configuration, scope},
     });
 
     // reset selected element
@@ -38,7 +39,7 @@ const PropertyEditForm = () => {
 
   useEffect(() => {
     usePropertyEditStore.setState({fields: elementConfiguration});
-  }, [elementPath]);
+  }, [elementPath, configurationMap]);
 
   return (
     <form onSubmit={applyConfiguration}>

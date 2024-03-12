@@ -2,10 +2,13 @@
 
 import axios from 'axios';
 import useConfigurationStore from '@/app/store/configurationStore';
-import {omit} from 'lodash';
+import {get} from 'lodash';
+import {defineScope} from '@/app/component/schema/Schema';
 
 const AssistantForm = () => {
-  const selected = useConfigurationStore((state) => state.selected);
+  const {getConfiguration} = useConfigurationStore.getState();
+  const elementPath = useConfigurationStore((state) => state.elementPath);
+  const entries = useConfigurationStore((state) => get(state, `configuration.${elementPath}`));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -13,13 +16,17 @@ const AssistantForm = () => {
     const formData = new FormData(e.target);
     const task = formData.get('task');
 
-    const response = await axios.patch(`api/configuration/generate`, {
+    const scope = defineScope(elementPath);
+
+    await axios.patch(`api/configuration/generate`, {
       task,
-      scope: selected.scope,
-      entries: JSON.stringify(selected.entries, null, 2),
+      scope: scope,
+      entries: JSON.stringify(entries, null, 2),
+      path: elementPath,
     });
 
-    console.log(response);
+    // refresh configuration
+    getConfiguration();
   };
 
   return (
