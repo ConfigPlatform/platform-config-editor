@@ -21,7 +21,7 @@ const ElementRenderer = ({element, ml}: IProps) => {
       <p
         className={'hover:text-blue-700 cursor-pointer text-xs'}
         style={{marginLeft: `${ml}px`}}
-        onClick={() => selectElement({element, structure: 'modal'})}
+        onClick={() => selectElement({entries: element, scope: 'modal'})}
       >
         {type}
       </p>
