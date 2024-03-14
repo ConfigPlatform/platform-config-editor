@@ -2,10 +2,10 @@ import {get} from 'lodash';
 import ComponentSelect from '../../wrapper/ComponentSelect';
 import BlockLabel from '../BlockLabel';
 import ElementListRenderer from './ElementListRenderer';
+import {ReactNode} from 'react';
 
 interface IDropdown {
-  action: string;
-  content: object[];
+  children: ReactNode;
   path: string;
 }
 
@@ -16,7 +16,7 @@ const Dropdown = (props: IDropdown) => {
   return (
     <div className={'m-2'}>
       <ComponentSelect path={path}>
-        <div className="border-dashed border border-grey-500 p-1">
+        <div className="border-dashed border border-red-500 p-1">
           <BlockLabel label={'Dropdown'} />
           <ElementListRenderer content={content} path={`${path}.content`} />
         </div>
