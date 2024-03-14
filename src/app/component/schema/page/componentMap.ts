@@ -7,6 +7,7 @@ import Filter from '@/app/component/schema/page/Filter';
 import Pagination from '@/app/component/schema/page/Pagination';
 import Form from '@/app/component/schema/page/form/Form';
 import Link from '@/app/component/schema/page/Link';
+import Dropdown from '@/app/component/schema/page/Dropdown';
 
 const componentMap: {[name: string]: any} = {
   text: Text,
@@ -18,6 +19,7 @@ const componentMap: {[name: string]: any} = {
   filter: Filter,
   pagination: Pagination,
   form: Form,
+  dropdown: Dropdown,
 };
 
 export default componentMap;
