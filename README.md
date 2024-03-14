@@ -40,15 +40,15 @@ This project utilizes the following environment variables:
 
 - `HELPER_SERVER_ORIGIN`: Defines the origin URL of the helper server. Currently set to `http://localhost:5000`.
 
-- `CONFIG_BUILDER_PATH`: Defines the path to the configuration builder [platform-config-builder] (https://github.com/ConfigPlatform/platform-config-builder.git). Currently set to `C:/Users/marin/OneDrive/Рабочий стол/ConfigPlatform/platform-config-builder`.
-  Please ensure you use your own path to the platform-config-builder. This path shown as an example.
+- `CONFIG_PATH`: Defines the path to the configuration builder [config-kompot] (https://github.com/ConfigPlatform/config-kompot.git). Currently set to `C:/Users/marin/OneDrive/Рабочий стол/ConfigPlatform/config-kompot`.
+  Please ensure you use your own path to the config-compot. This path shown as an example.
 
 ### Your .env.local file should look like this:
 
 ```bash
 NEXT_PUBLIC_CLIENT_ORIGIN=http://localhost:4000
-HELPER_SERVER_ORIGIN=http://localhost:5000
-CONFIG_BUILDER_PATH=C:/Users/marin/OneDrive/Рабочий стол/ConfigPlatform/platform-config-builder
+HELPER_SERVER_ORIGIN=http://localhost:2000
+CONFIG_PATH=../config-kompot
 ```
 
 4. To start the client in development mode, use the following command:
