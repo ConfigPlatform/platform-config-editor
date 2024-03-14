@@ -13,6 +13,7 @@ export interface IProps {
 }
 
 const PageStructure = ({entries}: IProps) => {
+  console.log(entries, 'page entries');
   return (
     <div>
       <p className={'text-xs font-bold'}>PAGE</p>

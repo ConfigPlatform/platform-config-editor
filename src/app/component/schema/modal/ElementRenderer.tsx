@@ -10,7 +10,7 @@ interface IProps {
 const ElementRenderer = ({element, path}: IProps) => {
   const type = get(element, 'type', '');
 
-  if (!type) {
+  if (!type || type === 'container') {
     return <ElementListRenderer content={element.content} path={`${path}.content`} />;
   }
 

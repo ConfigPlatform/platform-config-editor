@@ -8,8 +8,6 @@ interface IProps {
 }
 
 const ModalSchema = ({element, path}: IProps) => {
-  console.log(path, 'path');
-  console.log(element, 'element');
   return <ElementRenderer element={element} path={path} />;
 };
 

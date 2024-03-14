@@ -23,6 +23,8 @@ export interface IProps {
 }
 
 const ModalStructure = ({entries}: IProps) => {
+  console.log(entries, 'modal entries');
+
   return (
     <div>
       <p className={'text-xs font-bold'}>MODAL</p>

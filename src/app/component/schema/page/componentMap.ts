@@ -7,7 +7,6 @@ import Filter from '@/app/component/schema/page/Filter';
 import Pagination from '@/app/component/schema/page/Pagination';
 import Form from '@/app/component/schema/page/form/Form';
 import Link from '@/app/component/schema/page/Link';
-import Container from '@/app/component/schema/page/Container';
 
 const componentMap: {[name: string]: any} = {
   text: Text,
@@ -19,7 +18,6 @@ const componentMap: {[name: string]: any} = {
   filter: Filter,
   pagination: Pagination,
   form: Form,
-  container: Container,
 };
 
 export default componentMap;

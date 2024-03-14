@@ -4,12 +4,10 @@ import Input, {IInput} from '@/app/component/schema/page/form/Input';
 import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
 import {get} from 'lodash';
 import InputList from '@/app/component/schema/page/form/InputList';
-import ActionList from '@/app/component/schema/page/ActiontList';
 import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 
 interface IFormProps {
   fields: IInput[];
-  actions: IACtion[];
   path: string;
 }
 
