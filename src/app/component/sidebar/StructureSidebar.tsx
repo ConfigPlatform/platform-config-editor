@@ -8,6 +8,7 @@ import NavbarStructure, {INavbar} from '@/app/component/structure/navbar/NavbarS
 import {IEntity} from '@/app/component/structure/entity/ElementListRenderer';
 import ModalStructure, {IModal} from '@/app/component/structure/modal/ModalStructure';
 import HandlerStructure, {IHandler} from '@/app/component/structure/handler/HandlerStructure';
+import SidepanelStructure, {ISidepanel} from '@/app/component/structure/sidepanel/SidepanelStructure';
 
 const StructureSidebar = () => {
   const pages = useConfigurationStore((state) => get(state, 'configuration.pages', []));
@@ -15,6 +16,7 @@ const StructureSidebar = () => {
   const navbar = useConfigurationStore((state) => get(state, 'configuration.navbar', []));
   const modals = useConfigurationStore((state) => get(state, 'configuration.modals', []));
   const handlers = useConfigurationStore((state) => get(state, 'configuration.handlers', []));
+  const sidepanel = useConfigurationStore((state) => get(state, 'configuration.sidepanels', []));
 
   return (
     <aside className={'h-screen w-1/12 border-gray-200 bg-gray-100 overflow-y-auto overflow-x-hidden p-2'}>
@@ -27,6 +29,8 @@ const StructureSidebar = () => {
       <ModalStructure entries={modals as IModal[]} />
       <hr className={'h-px my-4 bg-gray-400 border-0'} />
       <HandlerStructure entries={handlers as IHandler[]} />
+      <hr className={'h-px my-4 bg-gray-400 border-0'} />
+      <SidepanelStructure sidepanel={sidepanel as ISidepanel[]} />
     </aside>
   );
 };

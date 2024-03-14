@@ -14,7 +14,7 @@ const Col: React.FC<IProps> = (props) => {
   const path = get(props, 'path', '');
 
   const colWidth = get(props, 'width', 'w-full');
-  const elementWidth: string = (+colWidth / 12) * 100 - 1 + '%';
+  const elementWidth: string = (+colWidth / 12) * 100 - 1.7 + '%';
 
   return (
     <div className={'m-2'} style={{width: elementWidth}}>
