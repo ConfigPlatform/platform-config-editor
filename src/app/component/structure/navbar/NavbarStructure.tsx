@@ -18,11 +18,7 @@ export interface IContentContent {
   value: string;
 }
 
-interface IProps {
-  entries: object;
-}
-
-const NavbarStructure = ({entries}: IProps) => {
+const NavbarStructure = () => {
   return (
     <div>
       <p
