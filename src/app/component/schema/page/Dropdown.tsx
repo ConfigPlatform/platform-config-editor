@@ -16,7 +16,7 @@ const Dropdown = (props: IDropdown) => {
   return (
     <div className={'m-2'}>
       <ComponentSelect path={path}>
-        <div className="border-dashed border border-red-500 p-1">
+        <div className="border-dashed border border-pink-500">
           <BlockLabel label={'Dropdown'} />
           <ElementListRenderer content={content} path={`${path}.content`} />
         </div>

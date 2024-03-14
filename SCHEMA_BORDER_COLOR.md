@@ -11,3 +11,4 @@ Pagination - fuchsia-500
 Page - purple-500
 Form - red-500
 Form field - green-500
+Dropdown - pink-500
