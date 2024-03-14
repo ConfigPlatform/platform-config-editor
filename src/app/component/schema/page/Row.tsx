@@ -14,9 +14,9 @@ const Row = (props: IProps) => {
   const path = get(props, 'path', '');
 
   return (
-    <div className={'m-2'}>
+    <div className={'m-2 w-full pr-4'}>
       <ComponentSelect path={path}>
-        <div className={'flex flex-wrap border-dashed border border-emerald-500 p-1'}>
+        <div className={'flex flex-wrap border-dashed border border-emerald-500 w-full p-1'}>
           <BlockLabel label={'Row'} />
           <ElementListRenderer content={content} path={`${path}.content`} />
         </div>

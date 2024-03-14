@@ -1,17 +1,16 @@
 import mergePath from '@/app/util/mergePath';
 import fs from 'fs-extra';
 
-const {CONFIG_BUILDER_PATH} = process.env;
+const {CONFIG_PATH} = process.env;
 
 const getConfiguration = async () => {
-  const configPath = mergePath(CONFIG_BUILDER_PATH!, '_config');
-  const entityConfigPath = mergePath(configPath, 'config.entity.json');
-  const footerConfigPath = mergePath(configPath, 'config.footer.json');
-  const handlerConfigPath = mergePath(configPath, 'config.handler.json');
-  const navbarConfigPath = mergePath(configPath, 'config.navbar.json');
-  const modalConfigPath = mergePath(configPath, 'config.modal.json');
-  const pageConfigPath = mergePath(configPath, 'config.page.json');
-  const sidepanelConfigPath = mergePath(configPath, 'config.sidepanel.json');
+  const entityConfigPath = mergePath(CONFIG_PATH!, 'config.entity.json');
+  const footerConfigPath = mergePath(CONFIG_PATH!, 'config.footer.json');
+  const handlerConfigPath = mergePath(CONFIG_PATH!, 'config.handler.json');
+  const navbarConfigPath = mergePath(CONFIG_PATH!, 'config.navbar.json');
+  const modalConfigPath = mergePath(CONFIG_PATH!, 'config.modal.json');
+  const pageConfigPath = mergePath(CONFIG_PATH!, 'config.page.json');
+  const sidepanelConfigPath = mergePath(CONFIG_PATH!, 'config.sidepanel.json');
 
   const entities = JSON.parse(fs.readFileSync(entityConfigPath, 'utf8')).entities;
   const footer = JSON.parse(fs.readFileSync(footerConfigPath, 'utf8'));

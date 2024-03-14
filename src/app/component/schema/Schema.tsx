@@ -5,7 +5,7 @@ import {get} from 'lodash';
 import schemaMap from '@/app/component/schema/schemaMap';
 
 export const defineScope = (path: string): string | undefined => {
-  const scopes: string[] = ['page', 'entity', 'footer', 'navbar', 'sidepanel', 'handler', 'entity'];
+  const scopes: string[] = ['page', 'entity', 'footer', 'navbar', 'sidepanel', 'handler', 'entity', 'modal'];
 
   for (const scope of scopes) {
     if (path.includes(scope)) return scope;
