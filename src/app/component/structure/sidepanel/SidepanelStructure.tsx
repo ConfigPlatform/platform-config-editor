@@ -3,32 +3,19 @@
 import useConfigurationStore from '@/app/store/configurationStore';
 import {nanoid} from 'nanoid';
 
-
 export interface ISidepanel {
   className: string;
-  content: IContent[];
-}
-
-export interface IContent {
-  content: IContentContent[];
-  path: string;
-  type: string;
-}
-export interface IContentContent {
-  className: string;
-  type: string;
-  value: string;
+  content: object[];
 }
 
 interface IProps {
-  sidepanel: object;
+  sidepanel: ISidepanel[];
 }
 
 const SidepanelStructure = ({sidepanel}: IProps) => {
   return (
     <div>
-      <p className={'text-xs font-bold'}>Sidepanel</p>
-
+      <p className={'text-xs font-bold'}>SIDE PANEL</p>
       {sidepanel.map((el, i) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
