@@ -8,12 +8,11 @@ interface IUpdateConfigurationPayload {
   configUpdates: object;
 }
 
-const {CONFIG_BUILDER_PATH} = process.env;
+const {CONFIG_PATH} = process.env;
 
 const updateConfiguration = async ({scope, path, configUpdates}: IUpdateConfigurationPayload) => {
   // compose config file path
-  const configPath = mergePath(CONFIG_BUILDER_PATH!, '_config');
-  const configFilePath = mergePath(configPath, `config.${scope}.json`);
+  const configFilePath = mergePath(CONFIG_PATH!, `config.${scope}.json`);
 
   // get existing configuration
   const configuration = JSON.parse(fs.readFileSync(configFilePath, 'utf8'));

@@ -1,7 +1,7 @@
 'use client';
 
 import {get} from 'lodash';
-import ElementListRenderer from '@/app/component/structure/modal/ElementListRenderer';
+import ElementListRenderer from '@/app/component/structure/sidepanel/ElementListRenderer';
 import useConfigurationStore from '@/app/store/configurationStore';
 
 interface IProps {
@@ -19,9 +19,9 @@ const ElementRenderer = ({element, ml}: IProps) => {
   return (
     <div>
       <p
-        className={'hover:text-blue-700 cursor-pointer text-xs'}
+        className={'hover:text-blue-700 cursor-pointer'}
         style={{marginLeft: `${ml}px`}}
-        onClick={() => selectElement({element, structure: 'modal'})}
+        onClick={() => selectElement({element, structure: 'navbar'})}
       >
         {type}
       </p>

@@ -23,20 +23,17 @@ export interface IProps {
 }
 
 const ModalStructure = ({entries}: IProps) => {
-  const {selectElement} = useConfigurationStore.getState();
-
   return (
     <div>
-      <p className={'font-bold text-xs'}>MODAL</p>
-      {entries.map((el) => (
+      <p className={'text-xs font-bold'}>MODAL</p>
+      {entries.map((el, i) => (
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
-            className={'hover:text-blue-700 cursor-pointer'}
-            onClick={() => selectElement({entries: el, scope: 'modal'})}
+            className={'hover:text-blue-700 cursor-pointer text-xs'}
+            onClick={() => useConfigurationStore.setState({structurePath: `modals[${i}]`})}
           >
             {el.id}
           </b>
-          <ElementListRenderer ml={0} content={el.content} title="modals" />
         </div>
       ))}
     </div>

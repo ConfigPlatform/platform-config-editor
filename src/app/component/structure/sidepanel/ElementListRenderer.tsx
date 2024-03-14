@@ -1,5 +1,5 @@
 import {nanoid} from 'nanoid';
-import ElementRenderer from '@/app/component/structure/modal/ElementRenderer';
+import ElementRenderer from '@/app/component/structure/sidepanel/ElementRenderer';
 
 interface IProps {
   ml: number;
@@ -11,7 +11,7 @@ const ElementListRenderer = ({content, ml}: IProps) => {
   return (
     <>
       {content.map((el) => (
-        <ElementRenderer key={nanoid()} ml={ml + 5} element={el} />
+        <ElementRenderer key={nanoid()} ml={ml + 10} element={el} />
       ))}
     </>
   );
