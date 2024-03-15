@@ -1,13 +1,14 @@
-import {ReactNode, useEffect} from 'react';
+import {CSSProperties, ReactNode, useEffect} from 'react';
 import useConfigurationStore from '@/app/store/configurationStore';
 
 interface IProps {
   children: ReactNode;
   path: string;
   className?: string;
+  style?: CSSProperties;
 }
 
-const ComponentSelect = ({children, path, className}: IProps) => {
+const ComponentSelect = ({children, path, className, style}: IProps) => {
   const {addSelectedPath} = useConfigurationStore.getState();
   const elementPath = useConfigurationStore((state) => state.elementPath);
   const selectedPathList = useConfigurationStore((state) => state.selectedPathList);
@@ -31,7 +32,7 @@ const ComponentSelect = ({children, path, className}: IProps) => {
   };
 
   return (
-    <div className={defaultClassName} onClick={selectElement}>
+    <div style={style} className={defaultClassName} onClick={selectElement}>
       {children}
     </div>
   );

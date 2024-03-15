@@ -17,14 +17,14 @@ const Col: React.FC<IProps> = (props) => {
   const elementWidth: string = (+colWidth / 12) * 100 - 1.7 + '%';
 
   return (
-    <div className={'m-2'} style={{width: elementWidth}}>
-      <ComponentSelect path={path}>
-        <div className={'border-dashed border border-indigo-500 p-1'}>
-          <BlockLabel label={'Column'} />
-          <ElementListRenderer content={content} path={`${path}.content`} />
-        </div>
-      </ComponentSelect>
-    </div>
+    <ComponentSelect
+      path={path}
+      className={'m-2 border-dashed border border-indigo-500 p-1'}
+      style={{width: elementWidth}}
+    >
+      <BlockLabel label={'Column'} />
+      <ElementListRenderer content={content} path={`${path}.content`} />
+    </ComponentSelect>
   );
 };
 

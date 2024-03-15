@@ -12,14 +12,10 @@ const Filter = (props: IProps) => {
   const path = get(props, 'path', '');
 
   return (
-    <div className={'m-2'}>
-      <ComponentSelect path={path}>
-        <div className="border-dashed border border-yellow-500 p-1">
-          <BlockLabel label={'Filter'} />
-          <p className={'text-sm'}>{filterBy}</p>
-        </div>
-      </ComponentSelect>
-    </div>
+    <ComponentSelect path={path} className={'m-2 border-dashed border border-yellow-500 p-1'}>
+      <BlockLabel label={'Filter'} />
+      <p className={'text-sm'}>{filterBy}</p>
+    </ComponentSelect>
   );
 };
 

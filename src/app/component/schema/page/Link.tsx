@@ -15,14 +15,10 @@ const Link = (props: IProps) => {
   const path = get(props, 'path', '');
 
   return (
-    <div className={'m-2'}>
-      <ComponentSelect path={path}>
-        <div className={'p-1 border-dashed border border-orange-500'}>
-          <BlockLabel label={`Link ${href}`} />
-          <p className={'text-sm'}>{text}</p>
-        </div>
-      </ComponentSelect>
-    </div>
+    <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-orange-500'}>
+      <BlockLabel label={`Link ${href}`} />
+      <p className={'text-sm'}>{text}</p>
+    </ComponentSelect>
   );
 };
 

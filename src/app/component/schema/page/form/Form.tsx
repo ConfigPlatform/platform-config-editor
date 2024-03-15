@@ -17,15 +17,11 @@ const Form: React.FC<IFormProps> = (props) => {
   const path = get(props, 'path', '');
 
   return (
-    <div className={'m-2'}>
-      <ComponentSelect path={path}>
-        <div className={'border-dashed border border-red-500 p-1'}>
-          <BlockLabel label={'Form'} />
-          <InputList fields={fields} path={path} />
-          <ElementListRenderer content={actions} path={path} />
-        </div>
-      </ComponentSelect>
-    </div>
+    <ComponentSelect path={path} className={'m-2 border-dashed border border-red-500 p-1'}>
+      <BlockLabel label={'Form'} />
+      <InputList fields={fields} path={path} />
+      <ElementListRenderer content={actions} path={path} />
+    </ComponentSelect>
   );
 };
 
