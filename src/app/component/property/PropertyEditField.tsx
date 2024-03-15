@@ -1,6 +1,7 @@
 import usePropertyEditStore from '@/app/store/propertyEditStore';
 import {get} from 'lodash';
 import {useEffect, useState} from 'react';
+import ReadOnlyProperty from '@/app/component/property/ReadOnlyProperty';
 
 export interface IPropertyEditField {
   property: string;
@@ -12,7 +13,7 @@ const PropertyEditField = ({property}: IPropertyEditField) => {
 
   const [value, setValue] = useState(defaultValue);
 
-  const readOnlyProperties: string[] = ['content', 'columns', 'actions', 'fields'];
+  const readOnlyProperties: string[] = ['content', 'columns', 'actions', 'fields', 'vars'];
 
   useEffect(() => {
     updateField({property, value});
@@ -23,16 +24,7 @@ const PropertyEditField = ({property}: IPropertyEditField) => {
   }, [defaultValue]);
 
   // read-only view
-  if (readOnlyProperties.includes(property)) {
-    return (
-      <div className={'my-1'}>
-        <div className={'flex flex-row'}>
-          <p className={'mr-2'}>{property}:</p>
-          <p className={'font-medium'}>elements</p>
-        </div>
-      </div>
-    );
-  }
+  if (readOnlyProperties.includes(property)) return <ReadOnlyProperty property={property} />;
 
   return (
     <div className={'my-1'}>

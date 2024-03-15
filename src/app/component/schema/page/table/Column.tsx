@@ -18,15 +18,10 @@ const Column: FC<IColumn> = (props) => {
   const content = get(props, 'content', '');
 
   return (
-    <div className={'mx-1 m-2'}>
-      <ComponentSelect path={path}>
-        <div className={'border-dashed border border-teal-500 p-1'}>
-          <BlockLabel label={'Column'} />
-          <p className={'text-sm'}>{name}</p>
-          <ElementListRenderer content={content} path={`${path}.content`} />
-        </div>
-      </ComponentSelect>
-    </div>
+    <ComponentSelect path={path} className={'m-1 p-1 flex-1 border border-dashed border-teal-500'}>
+      <BlockLabel label={`Column ${name}`} />
+      <ElementListRenderer content={content} path={`${path}.content`} />
+    </ComponentSelect>
   );
 };
 
