@@ -12,6 +12,7 @@ interface ITable {
 }
 
 const Table = (props: ITable) => {
+  console.log(props, props);
   const select = get(props, 'select', '');
   const columns: IColumn[] = get(props, 'columns', []);
   const path = get(props, 'path', '');
