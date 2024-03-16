@@ -1,5 +1,5 @@
 import {nanoid} from 'nanoid';
-import ElementRenderer from '@/app/component/structure/sidepanel/ElementRenderer';
+import ElementRenderer from '@/app/component/schema/sidepanel/ElementRenderer';
 
 interface IProps {
   ml: number;
