@@ -46,9 +46,11 @@ This project utilizes the following environment variables:
 ### Your .env.local file should look like this:
 
 ```bash
-NEXT_PUBLIC_CLIENT_ORIGIN=http://localhost:4000
-HELPER_SERVER_ORIGIN=http://localhost:2000
-CONFIG_PATH=../config-kompot
+NEXT_PUBLIC_CLIENT_ORIGIN=http://localhost:3000
+HELPER_SERVER_ORIGIN=http://localhost:5000
+CONFIG_BUILDER_PATH=/Users/m/a/platf/platform-config-builder
+PLATFORM_CLIENT_PATH=/Users/m/a/platf/platform-client
+CONFIG_PATH=/Users/m/a/platf/config-kompot
 ```
 
 4. To start the client in development mode, use the following command:
