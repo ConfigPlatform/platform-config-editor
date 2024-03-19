@@ -1,5 +1,5 @@
 import {nanoid} from 'nanoid';
-import ElementRenderer from '@/app/component/structure/handler/ElementRenderer';
+import ElementRenderer from '@/app/component/schema/handler/ElementRenderer';
 
 interface IAction {
   type: string;

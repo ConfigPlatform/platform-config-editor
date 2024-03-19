@@ -1,7 +1,7 @@
 'use client';
 
 import {get} from 'lodash';
-import ElementListRenderer from '@/app/component/structure/handler/ElementListRenderer';
+import ElementListRenderer from '@/app/component/schema/handler/ElementListRenderer';
 import useConfigurationStore from '@/app/store/configurationStore';
 
 interface IAction {
@@ -20,9 +20,10 @@ interface IProps {
 const ElementRenderer = ({element, ml}: IProps) => {
   const {selectElement} = useConfigurationStore.getState();
 
-  const nestedActions = element.actions || [];
-  const onMatchActions = element.onMatch || [];
-  const onNotMatchActions = element.onNotMatch || [];
+  const nestedActions = get(element, 'actions', []);
+  const onMatchActions = get(element, 'onMatch', []);
+  const onNotMatchActions = get(element, 'onNotMatch', []);
+  console.log('Nested', nestedActions);
 
   return (
     <div>
