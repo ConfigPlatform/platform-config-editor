@@ -13,14 +13,10 @@ const Text = (props: IText) => {
   const path = get(props, 'path', '');
 
   return (
-    <div className={'m-2'}>
-      <ComponentSelect path={path}>
-        <div className={'p-1 border-dashed border border-violet-500'}>
-          <BlockLabel label={'Text'} />
-          <p className={'text-sm'}>{value}</p>
-        </div>
-      </ComponentSelect>
-    </div>
+    <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-violet-500'}>
+      <BlockLabel label={'Text'} />
+      <p className={'text-sm'}>{value}</p>
+    </ComponentSelect>
   );
 };
 

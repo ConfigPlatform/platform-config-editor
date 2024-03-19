@@ -17,13 +17,10 @@ const Table = (props: ITable) => {
   const path = get(props, 'path', '');
 
   return (
-    <div className={'m-2'}>
-      <ComponentSelect path={path}>
-        <div className={'border-dashed border border-blue-500 p-1'}>
-          <BlockLabel label={'Table'} />
-          <p className={'text-sm my-1'}>Select: {select}</p>
-          <ColumnList columns={columns} path={path} />
-        </div>
+    <div className={'w-full pr-4'}>
+      <ComponentSelect path={path} className={'m-2 border-dashed border border-blue-500 p-1 w-full'}>
+        <BlockLabel label={`Table ${select}`} />
+        <ColumnList columns={columns} path={path} />
       </ComponentSelect>
     </div>
   );

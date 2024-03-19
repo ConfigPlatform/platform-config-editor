@@ -14,7 +14,7 @@ const ColumnList = (props: IProps) => {
   return (
     <div className="flex flex-row">
       {columns.map((el, i) => (
-        <Column key={i} name={el.name} path={`${path}.columns[${i}]`} />
+        <Column key={i} content={el.content} name={el.name} path={`${path}.columns[${i}]`} />
       ))}
     </div>
   );

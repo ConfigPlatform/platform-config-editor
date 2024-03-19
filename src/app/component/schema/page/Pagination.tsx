@@ -13,7 +13,7 @@ const Pagination = ({select, path}: IPagination) => {
       <ComponentSelect path={path}>
         <div className={'border-dashed border border-fuchsia-500 p-1'}>
           <BlockLabel label={'Pagination'} />
-          <p className={'text-sm'}>Select: {select}</p>
+          <p className={'text-sm'}>{select}</p>
         </div>
       </ComponentSelect>
     </div>

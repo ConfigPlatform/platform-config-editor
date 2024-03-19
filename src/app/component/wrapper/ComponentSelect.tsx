@@ -1,23 +1,25 @@
-import {ReactNode, useEffect} from 'react';
+import {CSSProperties, ReactNode, useEffect} from 'react';
 import useConfigurationStore from '@/app/store/configurationStore';
 
 interface IProps {
   children: ReactNode;
   path: string;
+  className?: string;
+  style?: CSSProperties;
 }
 
-const ComponentSelect = ({children, path}: IProps) => {
+const ComponentSelect = ({children, path, className, style}: IProps) => {
   const {addSelectedPath} = useConfigurationStore.getState();
   const elementPath = useConfigurationStore((state) => state.elementPath);
   const selectedPathList = useConfigurationStore((state) => state.selectedPathList);
 
   const isElementSelected: boolean = path === elementPath && !!path && !!elementPath;
 
-  let className = 'cursor-pointer';
+  let defaultClassName = `${className} cursor-pointer`;
 
   // add bg color if element is selected
   if (isElementSelected) {
-    className += ' bg-gray-300';
+    defaultClassName += ' bg-gray-300';
   }
 
   // select element
@@ -30,7 +32,7 @@ const ComponentSelect = ({children, path}: IProps) => {
   };
 
   return (
-    <div className={className} onClick={selectElement}>
+    <div style={style} className={defaultClassName} onClick={selectElement}>
       {children}
     </div>
   );

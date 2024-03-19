@@ -14,14 +14,10 @@ const Dropdown = (props: IDropdown) => {
   const path = get(props, 'path', '');
 
   return (
-    <div className={'m-2'}>
-      <ComponentSelect path={path}>
-        <div className="border-dashed border border-pink-500">
-          <BlockLabel label={'Dropdown'} />
-          <ElementListRenderer content={content} path={`${path}.content`} />
-        </div>
-      </ComponentSelect>
-    </div>
+    <ComponentSelect path={path} className={'m-2 border-dashed border border-pink-500'}>
+      <BlockLabel label={'Dropdown'} />
+      <ElementListRenderer content={content} path={`${path}.content`} />
+    </ComponentSelect>
   );
 };
 

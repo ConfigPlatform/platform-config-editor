@@ -15,14 +15,10 @@ const Input: React.FC<IInput> = (props) => {
   const path = get(props, 'path', '');
 
   return (
-    <div className={'m-2'}>
-      <ComponentSelect path={path}>
-        <div className={'border-dashed border border-green-500 p-1'}>
-          <BlockLabel label={`Field ${type}`} />
-          <p className={'text-sm'}>{label}</p>
-        </div>
-      </ComponentSelect>
-    </div>
+    <ComponentSelect path={path} className={'m-2 border-dashed border border-green-500 p-1'}>
+      <BlockLabel label={`Field ${type}`} />
+      <p className={'text-sm'}>{label}</p>
+    </ComponentSelect>
   );
 };
 

@@ -5,7 +5,7 @@ import PropertyEditForm from '@/app/component/property/PropertyEditForm';
 const Property = () => {
   return (
     <div>
-      <p className={'text-lg'}>Properties</p>
+      <p className={'text-lg'}>Element properties</p>
       <PropertyEditForm />
     </div>
   );

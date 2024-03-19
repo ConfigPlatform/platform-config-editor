@@ -4,7 +4,7 @@ import ElementRenderer from '@/app/component/schema/navbar/ElementRenderer';
 
 interface IProps {
   element: object;
-  path: strig;
+  path: string;
 }
 
 const NavbarSchema = ({element, path}: IProps) => {
