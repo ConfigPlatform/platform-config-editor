@@ -1,6 +1,6 @@
 'use client';
 
-import ElementRenderer from '@/app/component/schema/modal/ElementRenderer';
+import ElementRenderer from '@/app/component/schema/sidepanel/ElementRenderer';
 
 interface IProps {
   element: object;
