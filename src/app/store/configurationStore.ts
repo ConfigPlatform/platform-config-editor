@@ -32,6 +32,7 @@ const initialState: Pick<
   selectedPathList: [],
   structurePath: '',
   elementPath: '',
+  selectedItem: null,
   loading: false,
   error: null,
 };
