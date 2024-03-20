@@ -16,10 +16,12 @@ const DataContext = (props: IText) => {
   const select = get(props, 'select', '');
 
   return (
-    <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-sky-500 w-full'}>
-      <BlockLabel label={`DataContext - ${select}`} />
-      <ElementListRenderer content={content} path={`${path}.content`} />
-    </ComponentSelect>
+    <div className={'w-full pr-4'}>
+      <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-sky-500 w-full'}>
+        <BlockLabel label={`DataContext - ${select}`} />
+        <ElementListRenderer content={content} path={`${path}.content`} />
+      </ComponentSelect>
+    </div>
   );
 };
 
