@@ -8,6 +8,7 @@ import Pagination from '@/app/component/schema/page/Pagination';
 import Form from '@/app/component/schema/page/form/Form';
 import Link from '@/app/component/schema/page/Link';
 import Dropdown from '@/app/component/schema/page/Dropdown';
+import DataContext from '@/app/component/schema/page/DataContext';
 import Tooltip from '@/app/component/schema/page/Tooltip';
 
 const componentMap: {[name: string]: any} = {
@@ -21,6 +22,7 @@ const componentMap: {[name: string]: any} = {
   pagination: Pagination,
   form: Form,
   dropdown: Dropdown,
+  dataContext: DataContext,
   tooltip: Tooltip,
 };
 
