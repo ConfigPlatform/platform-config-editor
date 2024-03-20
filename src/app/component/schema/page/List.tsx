@@ -10,7 +10,6 @@ interface IProps {
 }
 
 const List = (props: IProps) => {
-  console.log(props, 'props');
   const content = get(props, 'content', []);
   const path = get(props, 'path', '');
 
