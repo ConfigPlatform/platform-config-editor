@@ -8,6 +8,7 @@ import Pagination from '@/app/component/schema/page/Pagination';
 import Form from '@/app/component/schema/page/form/Form';
 import Link from '@/app/component/schema/page/Link';
 import Dropdown from '@/app/component/schema/page/Dropdown';
+import List from '@/app/component/schema/page/List';
 
 const componentMap: {[name: string]: any} = {
   text: Text,
@@ -20,6 +21,7 @@ const componentMap: {[name: string]: any} = {
   pagination: Pagination,
   form: Form,
   dropdown: Dropdown,
+  list: List,
 };
 
 export default componentMap;
