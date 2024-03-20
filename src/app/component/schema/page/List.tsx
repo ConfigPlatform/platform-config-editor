@@ -16,7 +16,7 @@ const List = (props: IProps) => {
 
   return (
     <div className={'w-full pr-4'}>
-      <ComponentSelect path={path} className={'m-2 w-full flex flex-wrap border-dashed border border-emerald-500 p-1'}>
+      <ComponentSelect path={path} className={'m-2 w-full flex flex-wrap border-dashed border border-green-700 p-1'}>
         <BlockLabel label={'List'} />
         <ElementListRenderer content={content} path={`${path}.content`} />
       </ComponentSelect>
