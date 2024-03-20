@@ -9,6 +9,8 @@ import Form from '@/app/component/schema/page/form/Form';
 import Link from '@/app/component/schema/page/Link';
 import Dropdown from '@/app/component/schema/page/Dropdown';
 import List from '@/app/component/schema/page/List';
+import DataContext from '@/app/component/schema/page/DataContext';
+import Tooltip from '@/app/component/schema/page/Tooltip';
 
 const componentMap: {[name: string]: any} = {
   text: Text,
@@ -22,6 +24,8 @@ const componentMap: {[name: string]: any} = {
   form: Form,
   dropdown: Dropdown,
   list: List,
+  dataContext: DataContext,
+  tooltip: Tooltip,
 };
 
 export default componentMap;
