@@ -2,16 +2,15 @@ import {nanoid} from 'nanoid';
 import ElementRenderer from '@/app/component/schema/sidepanel/ElementRenderer';
 
 interface IProps {
-  ml: number;
   content: object[];
-  title?: string;
+  path: string;
 }
 
-const ElementListRenderer = ({content, ml}: IProps) => {
+const ElementListRenderer = ({content, path}: IProps) => {
   return (
     <>
-      {content.map((el) => (
-        <ElementRenderer key={nanoid()} ml={ml + 10} element={el} />
+      {content.map((el, i) => (
+        <ElementRenderer key={nanoid()} element={el} path={`${path}[${i}]`} />
       ))}
     </>
   );
