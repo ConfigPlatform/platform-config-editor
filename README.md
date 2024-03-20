@@ -1,4 +1,4 @@
-# Platform Config Helper
+# Platform Config Editor
 
 This part of the project is responsible for the client-side functionality. The client sends requests through the Next.js API route to interact with the server, which acts as a configuration generator. The API route reads or writes files in JSON format, and responses are obtained through the file system. This approach enables communication between the client and the server for configuration-related operations.
 
