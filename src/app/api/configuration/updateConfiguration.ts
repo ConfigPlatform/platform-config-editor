@@ -4,7 +4,8 @@ import updateConfigurationQuery from '@/app/api/query/updateConfiguration';
 const generateConfiguration = async (req: NextRequest) => {
   const data = await req.json();
 
-  await updateConfigurationQuery(data);
+  // change element order
+  updateConfigurationQuery(data);
 
   return new Response(null, {status: 200});
 };

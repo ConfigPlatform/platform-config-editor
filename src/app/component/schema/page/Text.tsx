@@ -2,6 +2,7 @@ import {get} from 'lodash';
 import React from 'react';
 import BlockLabel from '@/app/component/schema/BlockLabel';
 import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
+import Sortable from '@/app/component/wrapper/Sortable';
 
 interface IText {
   value: string;
@@ -13,10 +14,10 @@ const Text = (props: IText) => {
   const path = get(props, 'path', '');
 
   return (
-    <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-violet-500'}>
+    <Sortable path={path} className={'m-2 p-1 border-dashed border border-violet-500'}>
       <BlockLabel label={'Text'} />
       <p className={'text-sm'}>{value}</p>
-    </ComponentSelect>
+    </Sortable>
   );
 };
 

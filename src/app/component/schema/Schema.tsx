@@ -3,6 +3,7 @@
 import useConfigurationStore from '@/app/store/configurationStore';
 import {get} from 'lodash';
 import schemaMap from '@/app/component/schema/schemaMap';
+import DndDragDrop from '@/app/component/wrapper/DndDragDrop';
 
 export const defineScope = (path: string): string | undefined => {
   const scopes: string[] = ['page', 'entity', 'footer', 'navbar', 'sidepanel', 'handler', 'entity', 'modal'];
@@ -23,7 +24,11 @@ const Schema = () => {
 
   return (
     <div className={'w-8/12 flex items-start justify-start flex-col p-2 overflow-y-auto overflow-x-hidden h-screen'}>
-      {SchemaRenderer ? <SchemaRenderer element={entries} path={structurePath} /> : null}
+      {SchemaRenderer ? (
+        <DndDragDrop>
+          <SchemaRenderer element={entries} path={structurePath} />
+        </DndDragDrop>
+      ) : null}
     </div>
   );
 };

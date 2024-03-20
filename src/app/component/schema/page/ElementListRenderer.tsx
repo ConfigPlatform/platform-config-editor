@@ -7,13 +7,7 @@ interface IProps {
 }
 
 const ElementListRenderer = ({content, path}: IProps) => {
-  return (
-    <>
-      {content.map((el, i) => (
-        <ElementRenderer key={nanoid()} element={el} path={`${path}[${i}]`} />
-      ))}
-    </>
-  );
+  return content.map((el, i) => <ElementRenderer key={nanoid()} element={el} path={`${path}[${i}]`} />);
 };
 
 export default ElementListRenderer;

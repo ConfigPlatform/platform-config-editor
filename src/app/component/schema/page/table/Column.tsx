@@ -5,6 +5,7 @@ import {get} from 'lodash';
 import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
 import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 import {IContent} from '@/app/component/structure/navbar/NavbarStructure';
+import Sortable from '@/app/component/wrapper/Sortable';
 
 export interface IColumn {
   name: string;
