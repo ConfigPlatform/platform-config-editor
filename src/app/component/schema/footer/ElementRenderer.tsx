@@ -9,10 +9,9 @@ interface IProps {
 
 const ElementRenderer = ({element, path}: IProps) => {
   const type = get(element, 'type', '');
-  const content = get(element, 'footer.content', []);
 
   if (!type) {
-    return <ElementListRenderer content={content} path={`${path}.content`} />;
+    return <ElementListRenderer content={element.content} path={`${path}.content`} />;
   }
 
   const Component = componentMap[type];
