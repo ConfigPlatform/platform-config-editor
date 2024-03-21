@@ -13,9 +13,9 @@ const ElementRenderer = ({element, path}) => {
     number: Type,
     relation: Type,
   };
-  //!Note: Options are shown as [object Object] since there is no nested object handlers for the assistant.
+  //!Note: Options are shown as [object Object] since there is no nested object handler for the assistant.
   const Component = componentMap[element.type] || Type;
-  //Checking for nested objects.
+  //Deconstructing fields.
   if (element.fields && Array.isArray(element.fields)) {
     return (
       <div key={path}>
