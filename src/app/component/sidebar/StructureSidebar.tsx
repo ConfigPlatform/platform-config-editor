@@ -3,9 +3,8 @@
 import useConfigurationStore from '@/app/store/configurationStore';
 import {get} from 'lodash';
 import PageStructure, {Page} from '@/app/component/structure/page/PageStructure';
-import EntityStructure from '@/app/component/structure/entity/EntityStructure';
+import EntityStructure, {IEntity} from '@/app/component/structure/entity/EntityStructure';
 import NavbarStructure from '@/app/component/structure/navbar/NavbarStructure';
-import {IEntity} from '@/app/component/structure/entity/ElementListRenderer';
 import ModalStructure, {IModal} from '@/app/component/structure/modal/ModalStructure';
 import HandlerStructure, {IHandler} from '@/app/component/structure/handler/HandlerStructure';
 import SidepanelStructure, {ISidepanel} from '@/app/component/structure/sidepanel/SidepanelStructure';
