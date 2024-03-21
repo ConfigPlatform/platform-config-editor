@@ -1,21 +1,16 @@
 import {nanoid} from 'nanoid';
-import ElementRenderer from '@/app/component/schema/handler/ElementRenderer';
-
-interface IAction {
-  type: string;
-  actions?: IAction[];
-  title: string;
-}
+import ElementRenderer from './ElementRenderer';
 
 interface IProps {
-  ml: number;
-  actions: IAction[];
+  name: string;
+  actions: object[];
 }
-const ElementListRenderer = ({actions, ml}: IProps) => {
+
+const ElementListRenderer = ({name, actions}: IProps) => {
   return (
     <>
-      {actions.map((el) => (
-        <ElementRenderer key={nanoid()} ml={ml + 5} element={el} />
+      {Object.entries(actions).map((action, i) => (
+        <ElementRenderer key={nanoid()} element={action} name={`${name}[${i}]`} />
       ))}
     </>
   );

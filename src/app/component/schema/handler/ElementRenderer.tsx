@@ -1,48 +1,24 @@
 'use client';
 
 import {get} from 'lodash';
-import ElementListRenderer from '@/app/component/schema/handler/ElementListRenderer';
-import useConfigurationStore from '@/app/store/configurationStore';
-
-interface IAction {
-  type: string;
-  actions?: IAction[];
-  onMatch?: IAction[];
-  onNotMatch?: IAction[];
-  title: string;
-}
+import HandlerComponentMap from './HandlerComponentMap';
+import ElementListRenderer from './ElementListRenderer';
 
 interface IProps {
-  ml: number;
-  element: IAction;
+  name: string;
+  element: object;
 }
 
-const ElementRenderer = ({element, ml}: IProps) => {
-  const {selectElement} = useConfigurationStore.getState();
+const ElementRenderer = ({name, element}: IProps) => {
+  const type = get(element, 'type');
+  console.log(element, 'element');
+  console.log(type, 'TYPEHANDLER');
 
-  const nestedActions = get(element, 'actions', []);
-  const onMatchActions = get(element, 'onMatch', []);
-  const onNotMatchActions = get(element, 'onNotMatch', []);
-  console.log('Nested', nestedActions);
+  if (!type) return <ElementListRenderer name={`${name}.actions`} actions={element.actions} />;
 
-  return (
-    <div>
-      <p
-        className={'hover:text-blue-700 cursor-pointer text-xs'}
-        style={{marginLeft: `${ml}px`}}
-        onClick={() => selectElement({element, structure: 'handler'})}
-      >
-        {element.type}
-      </p>
-      <ElementListRenderer ml={ml} actions={nestedActions} />
-      {element.type === 'condition' && (
-        <>
-          {onMatchActions.length > 0 && <ElementListRenderer ml={ml} actions={onMatchActions} />}
-          {onNotMatchActions.length > 0 && <ElementListRenderer ml={ml} actions={onNotMatchActions} />}
-        </>
-      )}
-    </div>
-  );
+  const HandlerComponent = HandlerComponentMap[type];
+
+  return <>{HandlerComponent ? <HandlerComponent {...element} name={name} /> : null}</>;
 };
 
 export default ElementRenderer;
