@@ -1,16 +1,17 @@
 import {nanoid} from 'nanoid';
-import ElementRenderer from './ElementRenderer';
+import ElementRenderer from '@/app/component/schema/handler/ElementRenderer';
 
 interface IProps {
-  name: string;
+  path: string;
   actions: object[];
 }
 
-const ElementListRenderer = ({name, actions}: IProps) => {
+const ElementListRenderer = ({path, actions}: IProps) => {
+  console.log(actions, 'ACT');
   return (
     <>
-      {Object.entries(actions).map((action, i) => (
-        <ElementRenderer key={nanoid()} element={action} name={`${name}[${i}]`} />
+      {actions.map((action, i) => (
+        <ElementRenderer key={nanoid()} element={action} path={`${path}[${i}]`} />
       ))}
     </>
   );

@@ -25,7 +25,7 @@ const HandlerStructure = ({entries}: IProps) => {
         <div key={nanoid()} style={{marginLeft: '4px'}}>
           <b
             className={'hover:text-blue-700 cursor-pointer text-xs'}
-            onClick={() => useConfigurationStore.setState({structurePath: `handler[${i}]`})}
+            onClick={() => useConfigurationStore.setState({structurePath: `handlers[${i}]`})}
           >
             {el.name}
           </b>

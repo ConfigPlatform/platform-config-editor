@@ -3,12 +3,13 @@
 import ElementRenderer from '@/app/component/schema/handler/ElementRenderer';
 
 interface IProps {
-  name: string;
-  actions: object;
+  element: object;
+  path: string;
 }
 
-const HandlersSchema = ({name, actions}: IProps) => {
-  return <ElementRenderer name={name} element={actions} />;
+const HandlerSchema = ({element, path}: IProps) => {
+  console.log(element, 'HAndlerEl');
+  return <ElementRenderer element={element} path={path} />;
 };
 
-export default HandlersSchema;
+export default HandlerSchema;

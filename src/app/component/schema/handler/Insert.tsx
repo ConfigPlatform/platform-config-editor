@@ -21,7 +21,7 @@ const Insert = (props: IProps) => {
   return (
     <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-orange-500'}>
       <BlockLabel label={'Insert'} />
-      <p>Entity Name: {entityName}</p>
+      <p>{entityName}</p>
       <ul>
         {fields.map((field, index) => (
           <li key={index}>
