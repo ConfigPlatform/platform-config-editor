@@ -11,6 +11,7 @@ import Dropdown from '@/app/component/schema/page/Dropdown';
 import List from '@/app/component/schema/page/List';
 import DataContext from '@/app/component/schema/page/DataContext';
 import Tooltip from '@/app/component/schema/page/Tooltip';
+import Menu from '@/app/component/schema/page/Menu';
 
 const componentMap: {[name: string]: any} = {
   text: Text,
@@ -26,6 +27,7 @@ const componentMap: {[name: string]: any} = {
   list: List,
   dataContext: DataContext,
   tooltip: Tooltip,
+  menu: Menu,
 };
 
 export default componentMap;
