@@ -8,7 +8,6 @@ interface IProps {
 }
 
 const HandlerSchema = ({element, path}: IProps) => {
-  console.log(element, 'HAndlerEl');
   return <ElementRenderer element={element} path={path} />;
 };
 

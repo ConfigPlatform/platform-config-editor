@@ -7,7 +7,6 @@ interface IProps {
 }
 
 const ElementListRenderer = ({path, actions}: IProps) => {
-  console.log(actions, 'ACT');
   return (
     <>
       {actions.map((action, i) => (
