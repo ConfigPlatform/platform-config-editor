@@ -13,7 +13,7 @@ const getConfiguration = async () => {
   const sidepanelConfigPath = mergePath(CONFIG_PATH!, 'config.sidepanel.json');
 
   const entities = JSON.parse(fs.readFileSync(entityConfigPath, 'utf8')).entities;
-  const footer = JSON.parse(fs.readFileSync(footerConfigPath, 'utf8'));
+  const footer = JSON.parse(fs.readFileSync(footerConfigPath, 'utf8')).footer;
   const handlers = JSON.parse(fs.readFileSync(handlerConfigPath, 'utf8')).handlers;
   const navbar = JSON.parse(fs.readFileSync(navbarConfigPath, 'utf8')).navbar;
   const modals = JSON.parse(fs.readFileSync(modalConfigPath, 'utf8')).modals;

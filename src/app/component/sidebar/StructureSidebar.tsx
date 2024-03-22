@@ -8,6 +8,7 @@ import NavbarStructure from '@/app/component/structure/navbar/NavbarStructure';
 import ModalStructure, {IModal} from '@/app/component/structure/modal/ModalStructure';
 import HandlerStructure, {IHandler} from '@/app/component/structure/handler/HandlerStructure';
 import SidepanelStructure, {ISidepanel} from '@/app/component/structure/sidepanel/SidepanelStructure';
+import FooterStructure from '@/app/component/structure/footer/FooterStructure';
 
 const StructureSidebar = () => {
   const pages = useConfigurationStore((state) => get(state, 'configuration.pages', []));
@@ -29,6 +30,8 @@ const StructureSidebar = () => {
       <SidepanelStructure sidepanel={sidepanel as ISidepanel[]} />
       <hr className={'h-px my-4 bg-gray-400 border-0'} />
       <HandlerStructure entries={handlers as IHandler[]} />
+      <hr className={'h-px my-4 bg-gray-400 border-0'} />
+      <FooterStructure />
     </aside>
   );
 };
