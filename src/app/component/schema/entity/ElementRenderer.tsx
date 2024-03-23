@@ -1,6 +1,5 @@
 import React from 'react';
-import {get} from 'lodash';
-import Type from './Type';
+import Column from './Column';
 
 interface IEntity {
   name: string;
@@ -18,13 +17,6 @@ const dynamicStructureKey = (el: IEntity): keyof IEntity | undefined => {
   return keys.find((key) => Array.isArray(el[key]));
 };
 const ElementRenderer: React.FC<ElementRendererProps> = ({element, path}) => {
-  const componentMap: any = {
-    string: Type,
-    number: Type,
-    relation: Type,
-  };
-  const Component = componentMap[element.type] || Type;
-
   // Dynamically determine the key for the nested structure.
   const nestedKey = dynamicStructureKey(element);
 
@@ -43,7 +35,7 @@ const ElementRenderer: React.FC<ElementRendererProps> = ({element, path}) => {
     );
   } else {
     // Render if content doesn't contain a nested structure.
-    return <Component key={path} name={element.name} type={element.type} path={path} />;
+    return <Column key={path} path={path} {...element} />;
   }
 };
 
