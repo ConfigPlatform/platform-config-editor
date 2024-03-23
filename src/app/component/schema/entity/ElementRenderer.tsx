@@ -1,11 +1,12 @@
+import React from 'react';
 import {get} from 'lodash';
-
 import Type from './Type';
 
-interface IProps {
-  element: object;
-  path: string;
-}
+//Dynamic field identifier.
+const dynamicStructureKey = (el) => {
+  const keys = Object.keys(el);
+  return keys.find((key) => Array.isArray(el[key]));
+};
 
 const ElementRenderer = ({element, path}) => {
   const componentMap = {
@@ -13,19 +14,26 @@ const ElementRenderer = ({element, path}) => {
     number: Type,
     relation: Type,
   };
-  //!Note: Options are shown as [object Object] since there is no nested object handler for the assistant.
   const Component = componentMap[element.type] || Type;
-  //Deconstructing fields.
-  if (element.fields && Array.isArray(element.fields)) {
+
+  // Dynamically determine the key for the nested structure.
+  const nestedKey = dynamicStructureKey(element);
+
+  if (nestedKey) {
+    // Using nested key to access objects within entity.
     return (
       <div key={path}>
-        {element.fields.map((field, index) => (
-          <ElementRenderer key={`${path}.fields[${index}]`} element={field} path={`${path}.fields[${index}]`} /> //!NOTE: Not 100% dynamic.
+        {element[nestedKey].map((nestedElement, index) => (
+          <ElementRenderer
+            key={`${path}.${nestedKey}[${index}]`}
+            element={nestedElement}
+            path={`${path}.${nestedKey}[${index}]`}
+          />
         ))}
       </div>
     );
   } else {
-    // Ecah element gets each Type[component] render.
+    // Render if content doesn't contain a nested structure.
     return <Component key={path} name={element.name} type={element.type} path={path} />;
   }
 };
