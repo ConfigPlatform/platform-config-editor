@@ -13,9 +13,14 @@ Form - red-500
 Form field - green-500
 Dropdown - pink-500
 
+
 # Handlers
 
 Insert - orange-500
 Return - slate-500
 Delete - teal-500
 Mutate - green-500
+
+DataContext - sky-500
+Tooltip - amber-500
+
