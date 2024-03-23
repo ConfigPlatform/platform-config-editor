@@ -15,7 +15,7 @@ const Menu = (props: IProps) => {
 
   return (
     <div className={'w-full pr-4'}>
-      <ComponentSelect path={path} className={'m-2 w-full flex flex-wrap border-dashed border border-b-gray-700 p-1'}>
+      <ComponentSelect path={path} className={'m-2 w-full flex flex-wrap border-dashed border border-gray-700 p-1'}>
         <BlockLabel label={'Menu'} />
         <ElementListRenderer content={content} path={`${path}.content`} />
       </ComponentSelect>
