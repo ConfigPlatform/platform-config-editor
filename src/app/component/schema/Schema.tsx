@@ -5,7 +5,7 @@ import {get} from 'lodash';
 import schemaMap from '@/app/component/schema/schemaMap';
 
 export const defineScope = (path: string): string | undefined => {
-  const scopes: string[] = ['page', 'entity', 'footer', 'navbar', 'sidepanel', 'handler', 'entity', 'modal'];
+  const scopes: string[] = ['page', 'enti', 'footer', 'navbar', 'sidepanel', 'handler', 'entity', 'modal'];
 
   for (const scope of scopes) {
     if (path.includes(scope)) return scope;
@@ -18,9 +18,7 @@ const Schema = () => {
   const entries = useConfigurationStore((state) => get(state, `configuration.${structurePath}`));
 
   const scope = defineScope(structurePath);
-
   const SchemaRenderer = schemaMap[scope!];
-
   return (
     <div className={'w-8/12 flex items-start justify-start flex-col p-2 overflow-y-auto overflow-x-hidden h-screen'}>
       {SchemaRenderer ? <SchemaRenderer element={entries} path={structurePath} /> : null}
