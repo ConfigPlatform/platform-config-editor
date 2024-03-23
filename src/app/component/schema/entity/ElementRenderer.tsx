@@ -2,14 +2,23 @@ import React from 'react';
 import {get} from 'lodash';
 import Type from './Type';
 
+interface IEntity {
+  name: string;
+  type: string;
+  options: object[] | string;
+}
+interface ElementRendererProps {
+  element: IEntity;
+  path: string;
+}
 //Dynamic field identifier.
-const dynamicStructureKey = (el) => {
-  const keys = Object.keys(el);
+
+const dynamicStructureKey = (el: IEntity): keyof IEntity | undefined => {
+  const keys = Object.keys(el) as Array<keyof IEntity>;
   return keys.find((key) => Array.isArray(el[key]));
 };
-
-const ElementRenderer = ({element, path}) => {
-  const componentMap = {
+const ElementRenderer: React.FC<ElementRendererProps> = ({element, path}) => {
+  const componentMap: any = {
     string: Type,
     number: Type,
     relation: Type,
@@ -23,7 +32,7 @@ const ElementRenderer = ({element, path}) => {
     // Using nested key to access objects within entity.
     return (
       <div key={path}>
-        {element[nestedKey].map((nestedElement, index) => (
+        {(element as any)[nestedKey].map((nestedElement: IEntity, index: number) => (
           <ElementRenderer
             key={`${path}.${nestedKey}[${index}]`}
             element={nestedElement}
