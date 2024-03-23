@@ -3,7 +3,7 @@
 import ElementRenderer from '@/app/component/schema/entity/ElementRenderer';
 
 interface IProps {
-  element: object;
+  element: IEntity;
   path: string;
 }
 
