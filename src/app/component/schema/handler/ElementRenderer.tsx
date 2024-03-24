@@ -10,9 +10,7 @@ interface IProps {
 }
 
 const ElementRenderer = ({element, path}: IProps) => {
-  console.log('ELEMENT', element);
   const type = get(element, 'type');
-  console.log(type, 'TYPEHANDLER');
 
   if (!type) return <ElementListRenderer path={`${path}.actions`} actions={element.actions} />;
 
