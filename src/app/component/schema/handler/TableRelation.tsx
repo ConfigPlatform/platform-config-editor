@@ -17,7 +17,7 @@ const TableRelation = (props: IProps) => {
   const {table, column} = relation;
 
   return (
-    <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-green-500'}>
+    <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-indigo-500'}>
       <BlockLabel label={'TABLE_RELATION'} />
       <p className={'text-sm'}>
         Relation: {table}.{column}

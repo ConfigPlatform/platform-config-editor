@@ -24,5 +24,6 @@ TableRecordCreate - blue-500
 TableRecordDelete - teal-500
 TableDataSelect - yellow-500
 TableRecordUpdate - pink-500
+TableRelation - indigo-500
 VariableDefine - red-500
 VariableUpdate - green-500
