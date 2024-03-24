@@ -1,12 +1,9 @@
 import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
 import BlockLabel from '@/app/component/schema/BlockLabel';
 import {get} from 'lodash';
-import {ReactNode} from 'react';
-import ElementListRenderer from './ElementListRenderer';
 
 interface IProps {
   variable: string;
-  children: ReactNode;
   path: string;
 }
 

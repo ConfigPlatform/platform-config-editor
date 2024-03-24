@@ -20,7 +20,7 @@ const Condition: React.FC<IProps> = (props) => {
 
   return (
     <ComponentSelect path={path} className={'m-2 border-dashed border border-violet-500'}>
-      <BlockLabel label={'Condition'} />
+      <BlockLabel label={'CONDITION'} />
       {condition && <ElementListRenderer actions={onMatch} path={`${path}.onMatch`} />}
       {!condition && <ElementListRenderer actions={onNotMatch} path={`${path}.onNotMatch`} />}
     </ComponentSelect>
