@@ -18,6 +18,8 @@ Tooltip - amber-500
 # Handlers
 
 Condition - violet-500
+Condition match - lime-500
+Condition not match - rose-500
 Return - slate-500
 Parallel - fuchsia-500
 TableRecordCreate - blue-500

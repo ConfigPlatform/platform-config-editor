@@ -1,5 +1,6 @@
 import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
 import BlockLabel from '@/app/component/schema/BlockLabel';
+import {omit} from 'lodash';
 
 interface IProps {
   select: string | {column: string; alias: string}[];
@@ -9,31 +10,14 @@ interface IProps {
 }
 
 const TableDataSelect = (props: IProps) => {
-  const {select, from, assignToVar, path} = props;
-  const table = from.table;
+  const {path} = props;
 
-  const renderSelect = () => {
-    if (typeof select === 'string') {
-      return <p className={'text-sm'}>Select: {select}</p>;
-    }
-    return (
-      <ul>
-        {select.map((item, index) => (
-          <li key={index}>
-            <p className={'text-sm'}>Column: {item.column}</p>
-            <p className={'text-sm'}>Alias: {item.alias}</p>
-          </li>
-        ))}
-      </ul>
-    );
-  };
+  const actionConfig = omit(props, 'path', 'type');
 
   return (
     <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-yellow-500'}>
       <BlockLabel label={'TABLE_DATA_SELECT'} />
-      {renderSelect()}
-      <p className={'text-sm'}>From: {table}</p>
-      <p className={'text-sm'}>Assign To Variable: {assignToVar}</p>
+      <pre>{JSON.stringify(actionConfig, null, 2)}</pre>
     </ComponentSelect>
   );
 };

@@ -9,7 +9,7 @@ import TableRecordUpdate from './TableRecordUpdate';
 import Parallel from './Parallel';
 import TableRelation from './TableRelation';
 
-const HandlerComponentMap: {[name: string]: any} = {
+const ComponentMap: {[name: string]: any} = {
   RETURN: Return,
   CONDITION: Condition,
   PARALLEL: Parallel,
@@ -22,4 +22,4 @@ const HandlerComponentMap: {[name: string]: any} = {
   TABLE_RECORD_UPDATE: TableRecordUpdate,
 };
 
-export default HandlerComponentMap;
+export default ComponentMap;

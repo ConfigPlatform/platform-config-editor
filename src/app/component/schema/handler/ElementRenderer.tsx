@@ -1,7 +1,7 @@
 'use client';
 
 import {get} from 'lodash';
-import HandlerComponentMap from '@/app/component/schema/handler/HandlerComponentMap';
+import ComponentMap from '@/app/component/schema/handler/componentMap';
 import ElementListRenderer from '@/app/component/schema/handler/ElementListRenderer';
 
 interface IProps {
@@ -14,7 +14,7 @@ const ElementRenderer = ({element, path}: IProps) => {
 
   if (!type) return <ElementListRenderer path={`${path}.actions`} actions={element.actions} />;
 
-  const HandlerComponent = HandlerComponentMap[type];
+  const HandlerComponent = ComponentMap[type];
 
   return <>{HandlerComponent ? <HandlerComponent {...element} path={path} /> : null}</>;
 };

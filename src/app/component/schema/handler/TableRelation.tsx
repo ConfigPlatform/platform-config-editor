@@ -1,6 +1,7 @@
 import React from 'react';
 import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
 import BlockLabel from '@/app/component/schema/BlockLabel';
+import {omit} from 'lodash';
 
 interface IProps {
   relation: {table: string; column: string};
@@ -13,30 +14,14 @@ interface IProps {
 }
 
 const TableRelation = (props: IProps) => {
-  const {relation, of, remove, add, set, assignToVar, path} = props;
-  const {table, column} = relation;
+  const {path} = props;
+
+  const actionConfig = omit(props, 'path', 'type');
 
   return (
     <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-indigo-500'}>
       <BlockLabel label={'TABLE_RELATION'} />
-      <p className={'text-sm'}>
-        Relation: {table}.{column}
-      </p>
-      <p className={'text-sm'}>Of: {of}</p>
-      {remove && <p className={'text-sm'}>Remove: {remove}</p>}
-      {add && <p className={'text-sm'}>Add: {add}</p>}
-      {set && (
-        <ul>
-          {Object.keys(set).map((key, index) => (
-            <li key={index}>
-              <p className={'text-sm'}>
-                {key}: {set[key]}
-              </p>
-            </li>
-          ))}
-        </ul>
-      )}
-      <p className={'text-sm'}>Assign To Variable: {assignToVar}</p>
+      <pre>{JSON.stringify(actionConfig, null, 2)}</pre>
     </ComponentSelect>
   );
 };
