@@ -5,17 +5,17 @@ import {get} from 'lodash';
 
 interface IColumn {
   name: string;
-  type: string;
   options: object;
   path: string;
 }
 
-const Column = ({name, path, options, type}: IColumn) => {
+const Column = ({name, path, options}: IColumn) => {
   const columnType = get(options, 'type', '');
+  const relationType = get(options, 'relationType', '');
 
   return (
     <ComponentSelect path={path} className="m-2 p-1 border-dashed border border-orange-500">
-      <BlockLabel label={`Type: ${columnType || type}`} />
+      <BlockLabel label={`Type: ${columnType || relationType}`} />
       <p className="text-sm">{name}</p>
     </ComponentSelect>
   );

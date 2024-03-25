@@ -2,11 +2,7 @@
 
 import {nanoid} from 'nanoid';
 import useConfigurationStore from '@/app/store/configurationStore';
-
-export interface IEntity {
-  path: string;
-  fields: any[]; // Define a specific type for content if possible
-}
+import {IEntity} from '@/app/component/schema/entity/ElementRenderer';
 
 export interface IProps {
   entries: IEntity[];

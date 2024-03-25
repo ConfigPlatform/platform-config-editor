@@ -1,6 +1,6 @@
 'use client';
 
-import ElementRenderer from '@/app/component/schema/entity/ElementRenderer';
+import ElementRenderer, {IEntity} from '@/app/component/schema/entity/ElementRenderer';
 
 interface IProps {
   element: IEntity;
