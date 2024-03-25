@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import ElementListRenderer from '@/app/component/structure/handler/ElementListRenderer';
 import useConfigurationStore from '@/app/store/configurationStore';
 import { nanoid } from 'nanoid';
 
@@ -17,6 +16,7 @@ export interface IHandler {
 interface IProps {
   entries: IHandler[];
 }
+
 
 const HandlerStructure = ({ entries }: IProps) => {
   const [selectedHandler, setSelectedHandler] = useState<number | null>(null);
@@ -48,7 +48,6 @@ const HandlerStructure = ({ entries }: IProps) => {
           >
             {el.name}
           </b>
-          <ElementListRenderer ml={0} actions={el.actions} />
         </div>
       ))}
     </div>

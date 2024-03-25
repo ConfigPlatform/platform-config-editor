@@ -14,3 +14,18 @@ Form field - green-500
 Dropdown - pink-500
 DataContext - sky-500
 Tooltip - amber-500
+
+# Handlers
+
+Condition - violet-500
+Condition match - lime-500
+Condition not match - rose-500
+Return - slate-500
+Parallel - fuchsia-500
+TableRecordCreate - blue-500
+TableRecordDelete - teal-500
+TableDataSelect - yellow-500
+TableRecordUpdate - pink-500
+TableRelation - indigo-500
+VariableDefine - red-500
+VariableUpdate - green-500
