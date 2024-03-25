@@ -1,6 +1,6 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
-import { getRequest } from '@/app/util/request/request';
+import {create} from 'zustand';
+import {devtools} from 'zustand/middleware';
+import {getRequest} from '@/app/util/request/request';
 
 export interface IConfiguration {
   entities: object[];
@@ -24,11 +24,20 @@ interface IState {
   addSelectedPath: (payload: string) => void;
   reset: () => void;
   setSelectedItem: (i: number | null) => void;
+  assistantInput: string;
+  setAssistantInput: (payload: string) => void;
 }
 
 const initialState: Pick<
   IState,
-  'configuration' | 'selectedPathList' | 'structurePath' | 'elementPath' | 'loading' | 'error' | 'selectedItem'
+  | 'configuration'
+  | 'selectedPathList'
+  | 'structurePath'
+  | 'elementPath'
+  | 'loading'
+  | 'error'
+  | 'selectedItem'
+  | 'assistantInput'
 > = {
   configuration: {},
   selectedPathList: [],
@@ -37,22 +46,25 @@ const initialState: Pick<
   selectedItem: null,
   loading: false,
   error: null,
+  assistantInput: '',
 };
 
 const useConfigurationStore = create<IState>()(
   devtools((set, get) => ({
     ...initialState,
     getConfiguration: async () => {
-      const configuration = await getRequest({ url: '/api/configuration' });
-      set({ configuration });
+      const configuration = await getRequest({url: '/api/configuration'});
+      set({configuration});
     },
     addSelectedPath: (path) => {
       const selectedPathList = get().selectedPathList;
       selectedPathList.unshift(path);
-      set({ selectedPathList });
+      set({selectedPathList});
     },
-    setSelectedItem: (i: number | null) => set({ selectedItem: i }),
+    setSelectedItem: (i: number | null) => set({selectedItem: i}),
     reset: () => set(initialState),
+
+    setAssistantInput: (payload: string) => set({assistantInput: payload}),
   })),
 );
 
