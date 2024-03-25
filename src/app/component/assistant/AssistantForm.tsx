@@ -4,11 +4,14 @@ import axios from 'axios';
 import useConfigurationStore from '@/app/store/configurationStore';
 import {get} from 'lodash';
 import {defineScope} from '@/app/component/schema/Schema';
+import {useState} from 'react';
 
 const AssistantForm = () => {
   const {getConfiguration} = useConfigurationStore.getState();
   const elementPath = useConfigurationStore((state) => state.elementPath);
   const entries = useConfigurationStore((state) => get(state, `configuration.${elementPath}`));
+  const assistantInput = useConfigurationStore((state) => state.assistantInput);
+  const {setAssistantInput} = useConfigurationStore.getState();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,6 +41,8 @@ const AssistantForm = () => {
             rows={4}
             placeholder="Your task here..."
             name={'task'}
+            value={assistantInput}
+            onChange={(e) => setAssistantInput(e.target.value)}
           ></textarea>
         </div>
         <div className="flex items-center justify-start pt-1">
