@@ -1,6 +1,6 @@
 'use client';
 
-import { nanoid } from 'nanoid';
+import {nanoid} from 'nanoid';
 import useConfigurationStore from '@/app/store/configurationStore';
 
 export interface Page {
@@ -12,8 +12,14 @@ export interface IProps {
   entries: Page[];
 }
 
-const PageStructure = ({ entries }: IProps) => {
+const PageStructure = ({entries}: IProps) => {
   const structurePath = useConfigurationStore((state) => state.structurePath);
+  const {setAssistantInput} = useConfigurationStore.getState();
+
+  const handleClick = (i: number) => {
+    setAssistantInput('');
+    useConfigurationStore.setState({structurePath: `pages[${i}]`});
+  };
 
   return (
     <div>
@@ -22,10 +28,10 @@ const PageStructure = ({ entries }: IProps) => {
         const isSelected = structurePath === `pages[${i}]`;
 
         return (
-          <div key={nanoid()} style={{ marginLeft: '4px' }}>
+          <div key={nanoid()} style={{marginLeft: '4px'}}>
             <b
               className={`hover:text-blue-700 cursor-pointer text-xs ${isSelected ? 'text-blue-700' : ''}`}
-              onClick={() => useConfigurationStore.setState({ structurePath: `pages[${i}]` })}
+              onClick={() => handleClick(i)}
             >
               {el.path}
             </b>
@@ -37,4 +43,3 @@ const PageStructure = ({ entries }: IProps) => {
 };
 
 export default PageStructure;
-

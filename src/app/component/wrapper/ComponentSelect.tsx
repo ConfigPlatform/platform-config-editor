@@ -14,7 +14,7 @@ const ComponentSelect = ({children, path, className, style}: IProps) => {
   const selectedPathList = useConfigurationStore((state) => state.selectedPathList);
 
   const isElementSelected: boolean = path === elementPath && !!path && !!elementPath;
-
+  const {setAssistantInput} = useConfigurationStore.getState();
   let defaultClassName = `${className} cursor-pointer`;
 
   // add bg color if element is selected
@@ -27,7 +27,7 @@ const ComponentSelect = ({children, path, className, style}: IProps) => {
     addSelectedPath(path);
 
     const lastPath = selectedPathList[selectedPathList.length - 1];
-
+    setAssistantInput('');
     useConfigurationStore.setState({elementPath: lastPath, selectedPathList: []});
   };
 

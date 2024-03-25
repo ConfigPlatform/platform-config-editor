@@ -1,6 +1,6 @@
 'use client';
 
-import ElementListRenderer from '@/app/component/structure/modal/ElementListRenderer';
+import ElementListRenderer from '@/app/component/schema/modal/ElementListRenderer';
 import useConfigurationStore from '@/app/store/configurationStore';
 import {nanoid} from 'nanoid';
 import { useEffect, useState } from 'react';
