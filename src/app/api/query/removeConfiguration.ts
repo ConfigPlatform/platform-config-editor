@@ -9,7 +9,7 @@ interface IRemoveConfigurationPayload {
 
 const {CONFIG_PATH} = process.env;
 
-const removeConfiguration = async ({scope, path}: IRemoveConfigurationPayload) => {
+const removeConfiguration = ({scope, path}: IRemoveConfigurationPayload) => {
   // compose config file path
   const configFilePath = mergePath(CONFIG_PATH!, `config.${scope}.json`);
 

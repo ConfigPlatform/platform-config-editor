@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 
 const {CONFIG_PATH} = process.env;
 
-const getConfiguration = async () => {
+const getConfiguration = () => {
   const entityConfigPath = mergePath(CONFIG_PATH!, 'config.entity.json');
   const footerConfigPath = mergePath(CONFIG_PATH!, 'config.footer.json');
   const handlerConfigPath = mergePath(CONFIG_PATH!, 'config.handler.json');

@@ -10,7 +10,7 @@ interface IUpdateConfigurationPayload {
 
 const {CONFIG_PATH} = process.env;
 
-const updateConfiguration = async ({scope, path, configUpdates}: IUpdateConfigurationPayload) => {
+const updateConfiguration = ({scope, path, configUpdates}: IUpdateConfigurationPayload) => {
   // compose config file path
   const configFilePath = mergePath(CONFIG_PATH!, `config.${scope}.json`);
 

@@ -15,7 +15,7 @@ const generateConfiguration = async (req: NextRequest) => {
   const configUpdates = response.data;
 
   // update configuration file
-  await updateConfigurationQuery({scope, path, configUpdates});
+  updateConfigurationQuery({scope, path, configUpdates});
 
   return new Response(null, {status: 200});
 };
