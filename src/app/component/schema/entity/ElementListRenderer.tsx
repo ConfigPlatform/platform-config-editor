@@ -1,4 +1,3 @@
-import React from 'react';
 import {nanoid} from 'nanoid';
 import ElementRenderer from '@/app/component/schema/entity/ElementRenderer';
 

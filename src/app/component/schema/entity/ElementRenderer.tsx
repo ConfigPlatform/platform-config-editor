@@ -10,7 +10,6 @@ interface ElementRendererProps {
   element: IEntity;
   path: string;
 }
-//Dynamic field identifier.
 
 const dynamicStructureKey = (el: IEntity): keyof IEntity | undefined => {
   const keys = Object.keys(el) as Array<keyof IEntity>;
