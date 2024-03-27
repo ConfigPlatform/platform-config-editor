@@ -31,20 +31,23 @@ interface IProps {
 // function return component's paths
 const definePathSchema = ({element, path, pathList}: IDefineChildrenPaths): string[] => {
   let nextPath = path;
-
-  const type = get(element, 'type', '');
   let content = null;
 
+  const type = get(element, 'type', '');
+
+  // if element is table, children it's columns
   if (type === 'table') {
     content = get(element, 'columns', []);
     nextPath = `${path}.columns`;
   }
 
+  // if here content is empty, children it's content
   if (!content) {
     content = get(element, 'content', []);
     nextPath = `${path}.content`;
   }
 
+  // add parent path to list
   pathList.push(path);
 
   // loop content for define children paths
@@ -52,6 +55,7 @@ const definePathSchema = ({element, path, pathList}: IDefineChildrenPaths): stri
     const child = content[index];
     const childPath = `${nextPath}[${index}]`;
 
+    // add child path to list
     pathList.push(childPath);
 
     // recursively call fn to define child path
@@ -64,7 +68,8 @@ const definePathSchema = ({element, path, pathList}: IDefineChildrenPaths): stri
 const DragDropProvider = ({children}: IProps) => {
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor), useSensor(KeyboardSensor));
 
-  const selectedElementPath = useDragDropStore((state) => state.selectedElementPath);
+  const dragging = useDragDropStore((state) => state.dragging);
+  const selectedElementPath = useConfigurationStore((state) => state.selectedElementPath);
   const element = useConfigurationStore((state) => get(state, `configuration.${selectedElementPath}`));
 
   // define scope
@@ -76,8 +81,11 @@ const DragDropProvider = ({children}: IProps) => {
   const handleDragStart = (e: DragStartEvent) => {
     const path = get(e, 'active.id', '') as string;
 
+    // update drag status
+    useDragDropStore.setState({dragging: true});
+
     // update selected element path
-    useDragDropStore.setState({selectedElementPath: path});
+    useConfigurationStore.setState({selectedElementPath: path});
   };
 
   // drag end
@@ -93,14 +101,14 @@ const DragDropProvider = ({children}: IProps) => {
       data: {activePath, overPath, scope},
     });
 
-    // show all elements
-    useDragDropStore.setState({hiddenElementPathList: [], selectedElementPath: ''});
+    // update drag status
+    useDragDropStore.setState({dragging: false, hiddenElementPathList: []});
   };
 
   // define hidden element paths
   const hiddenElementPathList = useMemo(() => {
-    // empty array if no element selected
-    if (!selectedElementPath) return [];
+    // empty array if isn't dragging
+    if (!dragging) return [];
 
     // define children paths
     const pathSchema = definePathSchema({element, path: selectedElementPath, pathList: []});
@@ -109,7 +117,7 @@ const DragDropProvider = ({children}: IProps) => {
     const uniquePaths = [...new Set([selectedElementPath, ...pathSchema])];
 
     return uniquePaths;
-  }, [selectedElementPath]);
+  }, [dragging]);
 
   useEffect(() => {
     // save hidden element paths

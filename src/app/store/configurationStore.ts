@@ -15,14 +15,16 @@ export interface IConfiguration {
 interface IState {
   configuration: Partial<IConfiguration>;
   structurePath: string;
+  selectedElementPath: string;
   loading: boolean;
   error: Error | null;
   getConfiguration: () => Promise<void>;
   reset: () => void;
 }
 
-const initialState: Pick<IState, 'configuration' | 'structurePath' | 'loading' | 'error'> = {
+const initialState: Pick<IState, 'configuration' | 'selectedElementPath' | 'structurePath' | 'loading' | 'error'> = {
   configuration: {},
+  selectedElementPath: '',
   structurePath: '',
   loading: false,
   error: null,
