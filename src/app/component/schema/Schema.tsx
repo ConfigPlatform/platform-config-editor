@@ -3,10 +3,10 @@
 import useConfigurationStore from '@/app/store/configurationStore';
 import {get} from 'lodash';
 import schemaMap from '@/app/component/schema/schemaMap';
-import DndDragDrop from '@/app/component/wrapper/DndDragDrop';
+import DragDropProvider from '@/app/component/wrapper/DragDropProvider';
 
 export const defineScope = (path: string): string | undefined => {
-  const scopes: string[] = ['page', 'entity', 'footer', 'navbar', 'sidepanel', 'handler', 'entity', 'modal'];
+  const scopes: string[] = ['page', 'entity', 'footer', 'navbar', 'sidepanel', 'handler', 'modal'];
 
   for (const scope of scopes) {
     if (path.includes(scope)) return scope;
@@ -24,11 +24,11 @@ const Schema = () => {
 
   return (
     <div className={'w-8/12 flex items-start justify-start flex-col p-2 overflow-y-auto overflow-x-hidden h-screen'}>
-      {SchemaRenderer ? (
-        <DndDragDrop>
-          <SchemaRenderer element={entries} path={structurePath} />
-        </DndDragDrop>
-      ) : null}
+      {SchemaRenderer && (
+        <DragDropProvider>
+          <SchemaRenderer element={entries} path={structurePath} preview={false} />
+        </DragDropProvider>
+      )}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import {get} from 'lodash';
 import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 import BlockLabel from '@/app/component/schema/BlockLabel';
 import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
-import SortableList from '@/app/component/wrapper/SortableList';
+import DraggableList from '@/app/component/wrapper/DraggableList';
 
 interface IProps {
   content: object[];
@@ -17,7 +17,7 @@ const Row = (props: IProps) => {
   const itemPaths = content.map((el, i) => `${path}.content[${i}]`);
 
   return (
-    <SortableList items={itemPaths} strategy={'horizontal'}>
+    <DraggableList items={itemPaths} strategy={'horizontal'}>
       <div className={'w-full pr-4'}>
         <ComponentSelect
           path={path}
@@ -27,7 +27,7 @@ const Row = (props: IProps) => {
           <ElementListRenderer content={content} path={`${path}.content`} />
         </ComponentSelect>
       </div>
-    </SortableList>
+    </DraggableList>
   );
 };
 

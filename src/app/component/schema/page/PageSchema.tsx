@@ -3,10 +3,11 @@ import PageElementRenderer from '@/app/component/schema/page/ElementRenderer';
 interface IProps {
   element: object;
   path: string;
+  preview: boolean;
 }
 
-const PageSchema = ({element, path}: IProps) => {
-  return <PageElementRenderer element={element} path={path} />;
+const PageSchema = (props: IProps) => {
+  return <PageElementRenderer {...props} />;
 };
 
 export default PageSchema;

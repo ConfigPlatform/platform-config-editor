@@ -7,7 +7,7 @@ import {defineScope} from '@/app/component/schema/Schema';
 
 const AssistantForm = () => {
   const {getConfiguration} = useConfigurationStore.getState();
-  const elementPath = useConfigurationStore((state) => state.elementPath);
+  const elementPath = useConfigurationStore((state) => state.selectedElementPath);
   const entries = useConfigurationStore((state) => get(state, `configuration.${elementPath}`));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

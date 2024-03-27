@@ -1,8 +1,8 @@
-import {CSSProperties, ReactNode, useEffect} from 'react';
-import {get} from 'lodash';
-import {useDraggable} from '@dnd-kit/core';
 import {CSS} from '@dnd-kit/utilities';
-import useConfigurationStore from '@/app/store/configurationStore';
+import {useSortable} from '@dnd-kit/sortable';
+import {get} from 'lodash';
+import {CSSProperties, ReactNode} from 'react';
+import useDragDropStore from '@/app/store/dragDropStore';
 
 interface IProps {
   path: string;
@@ -15,37 +15,25 @@ const Draggable = (props: IProps) => {
   const path = get(props, 'path', '');
   const children = get(props, 'children');
   const className = get(props, 'className', '');
-  const style = get(props, 'style', {});
+  const initialStyle = get(props, 'style', {});
 
-  const {addSelectedPath} = useConfigurationStore.getState();
-  const selectedPathList = useConfigurationStore((state) => state.selectedPathList);
+  const hiddenElementPathList = useDragDropStore((state) => state.hiddenElementPathList);
 
-  const {attributes, listeners, setNodeRef, transform, isDragging} = useDraggable({
-    id: path,
-    data: {path},
-  });
+  const {attributes, listeners, setNodeRef, transform, transition} = useSortable({id: path});
 
-  // select element
-  const selectElement = () => {
-    addSelectedPath(path);
+  // define if we should hide element
+  const shouldHideElement: boolean = hiddenElementPathList.includes(path);
 
-    const lastPath = selectedPathList[selectedPathList.length - 1];
-
-    useConfigurationStore.setState({elementPath: lastPath, selectedPathList: []});
+  // element styles
+  const style = {
+    transform: CSS.Translate.toString(transform),
+    transition,
+    ...initialStyle,
+    visibility: shouldHideElement ? 'hidden' : 'visible',
   };
 
-  useEffect(() => {
-    isDragging && selectElement();
-  }, [isDragging]);
-
   return (
-    <div
-      ref={setNodeRef}
-      {...listeners}
-      {...attributes}
-      style={{...style, transform: CSS.Translate.toString(transform)}}
-      className={`${className} ${isDragging ? 'border-2' : ''}`}
-    >
+    <div ref={setNodeRef} style={style} className={className} {...listeners} {...attributes}>
       {children}
     </div>
   );

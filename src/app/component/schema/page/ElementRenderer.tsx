@@ -1,30 +1,29 @@
 import {get} from 'lodash';
 import componentMap from '@/app/component/schema/page/componentMap';
 import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
-import Droppable from '@/app/component/wrapper/Droppable';
-import SortableList from '../../wrapper/SortableList';
+import Column from '@/app/component/schema/page/table/Column';
 
 interface IProps {
   element: object;
   path: string;
+  preview: boolean;
 }
 
-const ElementRenderer = ({element, path}: IProps) => {
+const ElementRenderer = ({element, path, preview}: IProps) => {
   let type = get(element, 'type');
 
-  if (!type) {
-    const itemPaths = element.content.map((el, i) => `${path}.content[${i}]`);
+  // only for table column
+  if (!type && element.name) {
+    return <Column {...element} preview={preview} />;
+  }
 
-    return (
-      <SortableList items={itemPaths} strategy={'vertical'}>
-        <ElementListRenderer content={element.content} path={`${path}.content`} />
-      </SortableList>
-    );
+  if (!type) {
+    return <ElementListRenderer content={element.content} path={`${path}.content`} preview={preview} />;
   }
 
   const Component = componentMap[type];
 
-  return Component ? <Component {...element} path={path} /> : null;
+  return Component ? <Component {...element} path={path} preview={preview} /> : null;
 };
 
 export default ElementRenderer;

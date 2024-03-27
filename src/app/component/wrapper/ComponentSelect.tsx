@@ -16,7 +16,7 @@ const ComponentSelect = (props: IProps) => {
   const path = get(props, 'path', '');
 
   const {addSelectedPath} = useConfigurationStore.getState();
-  const elementPath = useConfigurationStore((state) => state.elementPath);
+  const elementPath = useConfigurationStore((state) => state.selectedElementPath);
   const selectedPathList = useConfigurationStore((state) => state.selectedPathList);
 
   const isElementSelected: boolean = path === elementPath && !!path && !!elementPath;

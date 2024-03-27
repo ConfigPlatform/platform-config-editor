@@ -9,7 +9,7 @@ import usePropertyEditStore from '@/app/store/propertyEditStore';
 const PropertyEditForm = () => {
   const {getConfiguration} = useConfigurationStore.getState();
   const configurationMap = useConfigurationStore((state) => state.configuration);
-  const elementPath = useConfigurationStore((state) => state.elementPath);
+  const elementPath = useConfigurationStore((state) => state.selectedElementPath);
 
   const elementConfiguration = useConfigurationStore((state) => get(state, `configuration.${elementPath}`, {}));
 

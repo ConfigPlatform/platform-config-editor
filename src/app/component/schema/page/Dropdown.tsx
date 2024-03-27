@@ -3,6 +3,7 @@ import ComponentSelect from '../../wrapper/ComponentSelect';
 import BlockLabel from '../BlockLabel';
 import ElementListRenderer from './ElementListRenderer';
 import {ReactNode} from 'react';
+import Draggable from '@/app/component/wrapper/Draggable';
 
 interface IDropdown {
   children: ReactNode;
@@ -14,10 +15,10 @@ const Dropdown = (props: IDropdown) => {
   const path = get(props, 'path', '');
 
   return (
-    <ComponentSelect path={path} className={'m-2 border-dashed border border-pink-500'}>
+    <Draggable path={path} className={'m-2 border-dashed border border-pink-500'}>
       <BlockLabel label={'Dropdown'} />
       <ElementListRenderer content={content} path={`${path}.content`} />
-    </ComponentSelect>
+    </Draggable>
   );
 };
 

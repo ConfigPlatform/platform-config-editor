@@ -3,7 +3,7 @@ import {get} from 'lodash';
 import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 import BlockLabel from '@/app/component/schema/BlockLabel';
 import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
-import Sortable from '@/app/component/wrapper/Sortable';
+import Draggable from '@/app/component/wrapper/Draggable';
 
 interface IProps {
   children: ReactNode;
@@ -18,12 +18,12 @@ const Col: React.FC<IProps> = (props) => {
   const elementWidth: string = (+colWidth / 12) * 100 - 1.7 + '%';
 
   return (
-    <Sortable path={path} className={'m-2 border-dashed border border-indigo-500 p-1'} style={{width: elementWidth}}>
+    <Draggable path={path} className={'m-2 border-dashed border border-indigo-500 p-1'} style={{width: elementWidth}}>
       <ComponentSelect path={path}>
         <BlockLabel label={'Column'} />
         <ElementListRenderer content={content} path={`${path}.content`} />
       </ComponentSelect>
-    </Sortable>
+    </Draggable>
   );
 };
 
