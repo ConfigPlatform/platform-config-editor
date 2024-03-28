@@ -12,14 +12,23 @@ export interface IProps {
   entries: IEntity[];
 }
 
-const EntityStructure = ({ entries }: IProps) => {
+const EntityStructure = ({ structurePath }: { structurePath: string }) => {
+  const entries = useConfigurationStore((state) => state.entries);
   const selectedEntity = useConfigurationStore((state) => state.selectedEntity);
-  const structurePath = useConfigurationStore((state) => state.structurePath);
+  const { setSelectedEntity, setState } = useConfigurationStore.getState();
 
   useEffect(() => {
-    const selected = entries.findIndex((el, i) => `entities[${i}]` === structurePath);
-    useConfigurationStore.setState({ selectedEntity: selected });
-  }, [structurePath, entries]);
+
+    if (entries && entries.length > 0) {
+      const selected = entries.findIndex((el, i) => `entities[${i}]` === structurePath);
+      setSelectedEntity(selected);
+    }
+  }, [structurePath, entries, setSelectedEntity]);
+
+
+  if (!entries || entries.length === 0) {
+    return null;
+  }
 
   return (
     <div>
@@ -29,7 +38,7 @@ const EntityStructure = ({ entries }: IProps) => {
         <div key={nanoid()} style={{ marginLeft: '4px' }}>
           <b
             className={`hover:text-blue-700 cursor-pointer text-xs ${selectedEntity === i ? 'text-blue-700' : ''}`}
-            onClick={() => useConfigurationStore.setState({ structurePath: `entities[${i}]`, selectedEntity: i })}
+            onClick={() => setState({ structurePath: `entities[${i}]`, selectedEntity: i })}
           >
             {el.entityName}
           </b>

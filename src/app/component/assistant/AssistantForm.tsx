@@ -1,17 +1,15 @@
-'use client';
-
 import axios from 'axios';
 import useConfigurationStore from '@/app/store/configurationStore';
-import {get} from 'lodash';
-import {defineScope} from '@/app/component/schema/Schema';
-import {useState} from 'react';
+import { get } from 'lodash';
+import { defineScope } from '@/app/component/schema/Schema';
+import { useState, useEffect } from 'react';
 
 const AssistantForm = () => {
-  const {getConfiguration} = useConfigurationStore.getState();
+  const { getConfiguration } = useConfigurationStore.getState();
   const elementPath = useConfigurationStore((state) => state.elementPath);
   const entries = useConfigurationStore((state) => get(state, `configuration.${elementPath}`));
   const assistantInput = useConfigurationStore((state) => state.assistantInput);
-  const {setAssistantInput} = useConfigurationStore.getState();
+  const { setAssistantInput } = useConfigurationStore.getState();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -1,4 +1,4 @@
-import {CSSProperties, ReactNode, useEffect} from 'react';
+import { CSSProperties, ReactNode, useEffect } from 'react';
 import useConfigurationStore from '@/app/store/configurationStore';
 
 interface IProps {
@@ -8,13 +8,13 @@ interface IProps {
   style?: CSSProperties;
 }
 
-const ComponentSelect = ({children, path, className, style}: IProps) => {
-  const {addSelectedPath} = useConfigurationStore.getState();
+const ComponentSelect = ({ children, path, className, style }: IProps) => {
+  const { addSelectedPath } = useConfigurationStore.getState();
   const elementPath = useConfigurationStore((state) => state.elementPath);
   const selectedPathList = useConfigurationStore((state) => state.selectedPathList);
+  const { setAssistantInput } = useConfigurationStore.getState();
 
   const isElementSelected: boolean = path === elementPath && !!path && !!elementPath;
-  const {setAssistantInput} = useConfigurationStore.getState();
   let defaultClassName = `${className} cursor-pointer`;
 
   // add bg color if element is selected
@@ -28,8 +28,13 @@ const ComponentSelect = ({children, path, className, style}: IProps) => {
 
     const lastPath = selectedPathList[selectedPathList.length - 1];
     setAssistantInput('');
-    useConfigurationStore.setState({elementPath: lastPath, selectedPathList: []});
+    useConfigurationStore.setState({ elementPath: lastPath, selectedPathList: [] });
   };
+
+  useEffect(() => {
+    // Обнуляем assistantInput при изменении elementPath
+    setAssistantInput('');
+  }, [elementPath, setAssistantInput]);
 
   return (
     <div style={style} className={defaultClassName} onClick={selectElement}>
