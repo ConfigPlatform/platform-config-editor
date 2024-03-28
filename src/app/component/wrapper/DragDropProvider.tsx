@@ -68,6 +68,7 @@ const definePathSchema = ({element, path, pathList}: IDefineChildrenPaths): stri
 const DragDropProvider = ({children}: IProps) => {
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor), useSensor(KeyboardSensor));
 
+  const {changeElementLocation} = useDragDropStore.getState();
   const dragging = useDragDropStore((state) => state.dragging);
   const selectedElementPath = useConfigurationStore((state) => state.selectedElementPath);
   const element = useConfigurationStore((state) => get(state, `configuration.${selectedElementPath}`));
@@ -92,14 +93,14 @@ const DragDropProvider = ({children}: IProps) => {
   const handleDragEnd = async (e: DragEndEvent) => {
     console.log(e);
 
-    const activePath = e.active.id;
-    const overPath = get(e, 'over.id', null);
+    const activePath = e.active.id as string;
+    const overPath = get(e, 'over.id', '');
 
-    // send request with drop data to update configuration
-    await patchRequest({
-      url: '/api/configuration/drag_end',
-      data: {activePath, overPath, scope},
-    });
+    // change position only if not same
+    if (activePath !== overPath) {
+      // send request with drop data to update configuration
+      await changeElementLocation({activePath, overPath, scope});
+    }
 
     // update drag status
     useDragDropStore.setState({dragging: false, hiddenElementPathList: []});
@@ -132,7 +133,7 @@ const DragDropProvider = ({children}: IProps) => {
       onDragEnd={handleDragEnd}
     >
       {children}
-      <DragOverlay style={{width: 'auto'}}>
+      <DragOverlay className={'w-full'}>
         {selectedElementPath && <SchemaRenderer path={selectedElementPath} element={element} preview={true} />}
       </DragOverlay>
     </DndContext>

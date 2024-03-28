@@ -3,6 +3,7 @@ import {get} from 'lodash';
 import React from 'react';
 import DraggableList from '@/app/component/wrapper/DraggableList';
 import DefineDraggableComponent from '@/app/component/wrapper/DefineDraggableComponent';
+import ElementListRenderer from '@/app/component/schema/page/ElementListRenderer';
 
 interface IProps {
   path: string;

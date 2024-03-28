@@ -49,3 +49,11 @@ export const delRequest = ({url, data}: IHttpMethod): Promise<any> => httpMethod
 
 export const putRequest = ({url, data, type}: IHttpMethod): Promise<any> =>
   httpMethod({method: 'put', url, data, type});
+
+export const requestHandlerMap: {[method: string]: (payload: IHttpMethod) => Promise<unknown>} = {
+  get: getRequest,
+  post: postRequest,
+  patch: patchRequest,
+  put: putRequest,
+  delete: delRequest,
+};

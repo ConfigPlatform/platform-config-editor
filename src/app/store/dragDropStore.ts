@@ -1,12 +1,19 @@
 import {create} from 'zustand';
 import {devtools} from 'zustand/middleware';
-import {produce} from 'immer';
+import sendRequest from '@/app/util/request/sendRequest';
+
+interface IChangeElementLocation {
+  activePath: string;
+  overPath: string;
+  scope?: string;
+}
 
 interface IState {
   hiddenElementPathList: string[];
   dragging: boolean;
   loading: boolean;
   error: any;
+  changeElementLocation: (payload: IChangeElementLocation) => Promise<void>;
   reset: () => void;
 }
 
@@ -20,6 +27,10 @@ const initialState: Pick<IState, 'dragging' | 'hiddenElementPathList' | 'loading
 const useDragDropStore = create<IState>()(
   devtools((set) => ({
     ...initialState,
+
+    changeElementLocation: async (payload) => {
+      await sendRequest({set, method: 'patch', body: {url: '/api/configuration/drag_end', data: payload}});
+    },
 
     reset: () => set(initialState),
   })),

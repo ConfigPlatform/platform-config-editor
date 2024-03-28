@@ -1,25 +1,43 @@
 import {get} from 'lodash';
 import React from 'react';
 import BlockLabel from '@/app/component/schema/BlockLabel';
-import ComponentSelect from '@/app/component/wrapper/ComponentSelect';
+import Draggable from '@/app/component/wrapper/Draggable';
+import DefineDraggableComponent from '@/app/component/wrapper/DefineDraggableComponent';
 
-interface IProps {
+interface ILink {
   text: string;
   href: string;
   path: string;
+  preview: boolean;
 }
 
-const Link = (props: IProps) => {
+const LinkPreview = (props: ILink) => {
+  const text = get(props, 'text', '');
+  const href = get(props, 'href', '');
+
+  return (
+    <div className={'m-2 p-1 border-dashed border border-orange-500 bg-gray-300'}>
+      <BlockLabel label={`Link ${href}`} />
+      <p className={'text-sm'}>{text}</p>
+    </div>
+  );
+};
+
+const LinkDraggable = (props: ILink) => {
   const text = get(props, 'text', '');
   const href = get(props, 'href', '');
   const path = get(props, 'path', '');
 
   return (
-    <ComponentSelect path={path} className={'m-2 p-1 border-dashed border border-orange-500'}>
+    <Draggable path={path} className={'m-2 p-1 border-dashed border border-orange-500'}>
       <BlockLabel label={`Link ${href}`} />
       <p className={'text-sm'}>{text}</p>
-    </ComponentSelect>
+    </Draggable>
   );
 };
+
+const Link = (props: ILink) => (
+  <DefineDraggableComponent componentProps={props} ComponentPreview={LinkPreview} ComponentDraggable={LinkDraggable} />
+);
 
 export default Link;

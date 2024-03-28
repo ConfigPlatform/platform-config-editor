@@ -17,13 +17,17 @@ const ElementRenderer = ({element, path, preview}: IProps) => {
     return <Column {...element} preview={preview} />;
   }
 
+  // only for page list
   if (!type) {
     return <ElementListRenderer content={element.content} path={`${path}.content`} preview={preview} />;
   }
 
   const Component = componentMap[type];
 
-  return Component ? <Component {...element} path={path} preview={preview} /> : null;
+  // null if component isn't defined
+  if (!Component) return null;
+
+  return <Component {...element} path={path} preview={preview} />;
 };
 
 export default ElementRenderer;

@@ -1,10 +1,10 @@
 import {NextRequest} from 'next/server';
-import changeElementOrderQuery from '@/app/api/query/changeElementOrder';
+import changeElementPosition from '@/app/api/query/changeElementPosition';
 
 const dragEnd = async (req: NextRequest) => {
   const data = await req.json();
 
-  changeElementOrderQuery(data);
+  changeElementPosition(data);
 
   return new Response(null, {status: 200});
 };
